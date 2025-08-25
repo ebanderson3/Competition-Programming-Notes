@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Strings.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Strings"
+              "title": "README"
             }
           },
           {
@@ -297,13 +297,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Strings.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Strings"
+              "title": "Outline of README"
             }
           },
           {
@@ -335,9 +335,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "177491464d6219ae",
+  "active": "72b93301d255b4f4",
   "lastOpenFiles": [
-    "Quick Access.md",
+    "Strings.md",
+    "README.md",
     "Math.md",
     "Iterating.md",
     "Input Reading.md",
@@ -351,7 +352,6 @@
     "C++/C++ Miscellaneous Info.md",
     "C++/Algorithm Library C++.md",
     "C++/Advanced Data Structures.md",
-    "Strings.md",
     "Python",
     "C++",
     "2025-08-25.md",
