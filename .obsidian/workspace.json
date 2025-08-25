@@ -4,165 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ab8d1cfd3c907294",
+        "id": "e6c42b41a033807a",
         "type": "tabs",
         "children": [
           {
-            "id": "dfa138afd761a73a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Input Reading.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Input Reading"
-            }
-          },
-          {
-            "id": "1d6e4a7117d16bb3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Input Reading.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Input Reading"
-            }
-          },
-          {
-            "id": "6495684c2b72d899",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Iterating.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Iterating"
-            }
-          },
-          {
-            "id": "5c2dfafb7a92d41f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Strings.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Strings"
-            }
-          },
-          {
-            "id": "f9be96f613cb81b6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Algorithm Library C++.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Algorithm Library C++"
-            }
-          },
-          {
-            "id": "b79aa6478798b4ac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Input Reading.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Input Reading"
-            }
-          },
-          {
-            "id": "9bab6d1f7b280071",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Algorithms.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Algorithms"
-            }
-          },
-          {
-            "id": "92d04d2213931ef2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Data Structures C++.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Data Structures C++"
-            }
-          },
-          {
-            "id": "373a8b58cf346980",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Advanced Data Structures.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Advanced Data Structures"
-            }
-          },
-          {
-            "id": "8b26b51ecc61f48d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dynamic Programming.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dynamic Programming"
-            }
-          },
-          {
-            "id": "7d014134733e31cd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "8c74539a0766fbd7",
+            "id": "2025490809498484",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -175,8 +21,7 @@
               "title": "Data Structures C++"
             }
           }
-        ],
-        "currentTab": 10
+        ]
       }
     ],
     "direction": "vertical"
@@ -297,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "C++/Data Structures C++.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of Data Structures C++"
             }
           },
           {
@@ -335,23 +180,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "72b93301d255b4f4",
+  "active": "2025490809498484",
   "lastOpenFiles": [
-    "Strings.md",
     "README.md",
-    "Math.md",
-    "Iterating.md",
-    "Input Reading.md",
+    "TODO list.md",
+    "C++/C++ Miscellaneous Info.md",
     "Graphs.md",
-    "Dynamic Programming.md",
+    "Input Reading.md",
+    "Iterating.md",
+    "Strings.md",
+    "Math.md",
     "Combinatorics.md",
     "Algorithms.md",
     "Python/Data Structures Python.md",
-    "C++/Integer Sets.md",
     "C++/Data Structures C++.md",
-    "C++/C++ Miscellaneous Info.md",
-    "C++/Algorithm Library C++.md",
+    "C++/Integer Sets.md",
     "C++/Advanced Data Structures.md",
+    "C++/Algorithm Library C++.md",
+    "Dynamic Programming.md",
     "Python",
     "C++",
     "2025-08-25.md",

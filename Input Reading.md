@@ -32,9 +32,7 @@ getline(cin, s);
 ## Read In
 ```c++
 int n;
-
 cin >> n;
-
 vector<int> v(n);
 
 // range based for loop, pretty useful for other things

@@ -7,8 +7,6 @@ __builtin_popcount(x);
 ```cpp
 __int128 bi;
 ```
-
-```
 # Long Long type
 ```cpp
 #define ll long long
@@ -17,10 +15,10 @@ __int128 bi;
 ```cpp
 typedef vector<int> vi; // basically a #define
 ```
-
 # Doing `N` test cases
 ```cpp
-int n; cin >> n;
+int n; 
+cin >> n;
 while (n--) { /* stuff */ }
 ```
 

@@ -10,10 +10,12 @@ priority_queue<pair<int, int>> pq;
 pq.push({0,1});
 // prev.assign(n, -1);
 vector<bool> vis(N+1, false);
+
 while (!pq.empty()) {
      int a = pq.top().second; pq.pop();
      if (vis[a]) continue;
      vis[a] = true;
+     
      for (auto [w, b] : adj[a]) {
          if (dist[a] + w < dist[b]) {
              dist[b] = dist[a] + w;

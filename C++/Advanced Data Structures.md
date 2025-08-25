@@ -18,8 +18,8 @@ typedef tree <
 typedef trie<
     std::string,           
     null_type,             
-    trie_string_access_traits<>,  // access traits
-    pat_trie_tag,          // tag type
+    trie_string_access_traits<>,    // access traits
+	pat_trie_tag,                   // tag type
     trie_prefix_search_node_update  // policy
 > pat_trie;
 
@@ -77,8 +77,6 @@ public:
 	     }
 	     return parent[x];
 	}
-	
-	  
 	
 	void unite(int x, int y) {
 	     int root_x = find(x);

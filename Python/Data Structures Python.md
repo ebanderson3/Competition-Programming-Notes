@@ -1,4 +1,4 @@
-#python #data_structures 
+#python #data_structures #ai
 See [[Data Structures C++]] instead
 
 - All containers use` len(container)` for size

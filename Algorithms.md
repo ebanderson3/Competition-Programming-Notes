@@ -1,13 +1,12 @@
 #algorithms #cpp
 # Max Subarray #array
-## Kadane's Algorithm
+## Kadane's Algorithm #dp #dynamic_programming
 ```cpp
 for (int k = 0; k < n; k++) {
 	sum = max(array[k],sum+array[k]);
 	best = max(best,sum);
 }
 ```
-
 # Max submatrix #matrix
 ## Using Kadane's algorithm
 ```cpp

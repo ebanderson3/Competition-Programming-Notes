@@ -1,0 +1,10 @@
+- Expand the math section
+	- Search through many previous competitions to find math concepts that are used
+	- maybe into a folder
+- Maze solving template
+- More advanced data structures
+- Check if fenwick tree works
+- Find more library algorithms (python especially)
+- python combinatorics notes
+- Set theory (math)
+- reading in graph input (all the different types)
