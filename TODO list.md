@@ -1,10 +1,25 @@
+- Python cheat sheets
 - Expand the math section
 	- Search through many previous competitions to find math concepts that are used
 	- maybe into a folder
 - Maze solving template
 - More advanced data structures
-- Check if fenwick tree works
+- Check if fenwick tree works/Make a better fenwick tree
 - Find more library algorithms (python especially)
-- python combinatorics notes
-- Set theory (math)
-- reading in graph input (all the different types)
+- Python combinatorics notes
+- Set theory cheat sheet (math)
+- Reading in graph input (all the different types)
+- Simple BFS in python for implicit graphs
+- Templates for reading in common input patterns
+- Pick's theorem
+- Root finding algorithms (bisection, Newton's method)
+- Optimization algorithms (golden section search, gradient descent)
+- Solving systems of linear equations
+- Advance string search algorithms
+- Chinese remainder theorem
+- Integration algorithms (Simpson's rule)
+- Line intersection tests
+- AABB intersection tests
+- Signed distance field formulas for common shapes
+- Algorithm for finding the intersection of polygons
+- Triangulation algorithm (ear clipping algorithm)
