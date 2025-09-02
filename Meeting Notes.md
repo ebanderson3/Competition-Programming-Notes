@@ -1,0 +1,13 @@
+# 09/02/25
+- MCPC 2023
+	- We looked at problems that teams above us were able to solve.
+- Should we be working on problems above our skill level or getting faster at our skill level?
+- Practice Competition on Thursday 09/04/25
+	- 3 Hours
+- Practice Competition on Friday 09/12/25
+	- 5 Hours
+- Would Dr. Towell be willing to select problems for our practice competitions?
+	- Ideal problems
+		- Have solutions available somewhere online
+		- Test our knowledge on a specific subject that we may be lacking on
+		- 

@@ -23,3 +23,4 @@
 - Signed distance field formulas for common shapes
 - Algorithm for finding the intersection of polygons
 - Triangulation algorithm (ear clipping algorithm)
+- Graph covering problem (Vertex Cover)
