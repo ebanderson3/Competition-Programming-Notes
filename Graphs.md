@@ -157,18 +157,18 @@ for (int i = 0; i < NDIRS; i++) {
 ## Cardinal Directions
 ```python
 for i in range(4):
-	x_off = (70 >> i * 2 & 3) - 1
+	x_off = (100 >> i * 2 & 3) - 1
 	y_off = (25 >> i * 2 & 3) - 1
 ```
 ## All Adjacent
 ```python
 for i in range(8):
-	x_off = (4646 >> i * 2 & 3) - 1
-	y_off = (1178 >> i * 2 & 3) - 1
+	x_off = (9602 >> i * 2 & 3) - 1
+	y_off = (602 >> i * 2 & 3) - 1
 ```
 ## Diagonals Only
 ```python
 for i in range(4):
-	x_off = (34 >> i * 2 & 3) - 1
+	x_off = (40 >> i * 2 & 3) - 1
 	y_off = (10 >> i * 2 & 3) - 1
 ```
