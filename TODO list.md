@@ -24,3 +24,7 @@
 - Algorithm for finding the intersection of polygons
 - Triangulation algorithm (ear clipping algorithm)
 - Graph covering problem (Vertex Cover)
+- Itertools studying
+- Modular arithmetic
+- Templates
+- 
