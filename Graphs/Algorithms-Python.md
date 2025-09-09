@@ -12,13 +12,32 @@ def bfs(start, graph):
                 visited.add(v)
                 q.append(v)
 ```
-# Depth-first Search
+# Depth-first Search (Recursive)
 ```python
 def dfs(u, graph, visited):
     visited.add(u)
     for v in graph[u]:
         if v not in visited:
             dfs(v, graph, visited)
+```
+# Depth-first Search (Iterative)
+```python
+def dfs_iter(start, graph):
+    visited = set()
+    stack = [start]
+
+    while stack:
+        u = stack.pop()
+        if u in visited:
+            continue
+        visited.add(u)
+
+        # process node u here if needed
+        for v in graph[u]:
+            if v not in visited:
+                stack.append(v)
+
+    return visited
 ```
 # Dijkstra's Algorithm
 ```python
