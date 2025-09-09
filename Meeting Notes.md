@@ -10,4 +10,6 @@
 	- Ideal problems
 		- Have solutions available somewhere online
 		- Test our knowledge on a specific subject that we may be lacking on
-		- 
+# 09/09/25
+- NAQ 2022
+- 
