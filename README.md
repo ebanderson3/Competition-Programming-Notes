@@ -4,7 +4,7 @@
 [[Integer Sets]]
 [[Algorithm Library C++]]
 [[C++ Miscellaneous Info]]
-[[Input Reading]]
+[[C++/Input Reading]]
 [[Strings]]
 [[Iterating]]
 # Python
@@ -14,6 +14,6 @@ Algorithms
 [[Algorithms]]
 [[Combinatorics]]
 [[Dynamic Programming]]
-[[Graphs]]
+[[C++/Graphs]]
 [[Math]]
 

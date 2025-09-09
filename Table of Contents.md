@@ -1,12 +1,12 @@
 # Python
-- [[Python Basics]]
+- [[Miscellaneous]]
 - [[Data Structures Python]]
 
 # C++
 - [[C++ Basics]]
 
 # Graphs
-- [[Graphs]]
+- [[C++/Graphs]]
 
 # Data Structures
 - [[Union Find]]

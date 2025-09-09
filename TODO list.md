@@ -27,4 +27,3 @@
 - Itertools studying
 - Modular arithmetic
 - Templates
-- 
