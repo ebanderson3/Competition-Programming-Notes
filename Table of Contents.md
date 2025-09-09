@@ -3,7 +3,7 @@
 - [[Data Structures Python]]
 
 # C++
-- [[C++ Basics]]
+- [[C++ File Template]]
 
 # Graphs
 - [[C++/Graphs]]

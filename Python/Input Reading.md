@@ -1,5 +1,4 @@
-## Fast Input
-
+# Fast Input
 ```python
 import sys
 input = sys.stdin.readline

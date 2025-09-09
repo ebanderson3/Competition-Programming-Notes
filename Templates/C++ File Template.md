@@ -17,7 +17,6 @@ int main() {
 	// return 0 can be omitted in C++
 }
 ```
-
 # Compile
 ```sh
 g++ -g -O2 -o test -std=gnu++23 <file>.cpp
