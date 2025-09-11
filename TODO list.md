@@ -12,7 +12,7 @@
 - Simple BFS in python for implicit graphs
 - Templates for reading in common input patterns
 - Pick's theorem
-- Root finding algorithms (bisection, Newton's method)
+- ~~Root finding algorithms (bisection, Newton's method)~~
 - Optimization algorithms (golden section search, gradient descent)
 - Solving systems of linear equations
 - Advance string search algorithms
