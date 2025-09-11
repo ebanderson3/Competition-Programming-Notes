@@ -27,3 +27,4 @@
 - Itertools studying
 - Modular arithmetic
 - Templates
+- Graph cycle counting
