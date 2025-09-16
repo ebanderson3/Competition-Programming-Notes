@@ -3,7 +3,7 @@
 # Sort #sort
 - `cmp_func` needs to be defined above (or can be a lambda)
 ```c++
-sort(v.begin(), v.end(), cmp_func);
+sort(v.begin(), v.end(), [](auto a, auto b) { return a < b; });
 ```
 # Min/Max #minmax
 - Returns an iterator, so remember to dereference

@@ -21,3 +21,11 @@ int main() {
 ```sh
 g++ -g -O2 -o test -std=gnu++23 <file>.cpp
 ```
+
+## Makefile
+```Makefile
+%: %.cpp input.txt
+	g++-15 -g -O2 -std=gnu++23 $<
+	./a.out < input.txt
+
+```
