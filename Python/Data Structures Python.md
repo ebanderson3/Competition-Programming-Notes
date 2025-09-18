@@ -6,7 +6,6 @@ See [[Data Structures C++]] instead
 - Lists support `.pop()` which removes and returns last element in O(1)
 - `del container[i]` or `.remove(x)` removes by index or value
 - `not container` is the Pythonic way to check if empty
-
 ## Hash table (unordered_map/map equivalent) #map #unordered_map #hash
 ```python
 d = {}                     # dict, O(1) average for insert/lookup
@@ -47,6 +46,19 @@ ms = Counter()
 ms[x] += 1                 # insert x
 ms[x]                      # count of x
 list(ms.elements())        # expand back into list with duplicates
+```
+## Dictionary
+```python
+my_dict = {}               
+my_dict["name"] = "Alice"          # insert "Alice" at "name"
+my_dict["age"] = 25
+my_dict.pop("age")                 # remove key
+for key in my_dict:                # loop through each key
+	pass
+for value in my_dict.values():     # loop through each value
+	pass
+for key, value in my_dict.items(): # loop through each key and value in dictioanry
+    print(key, ":", value)
 ```
 ## Stack (LIFO) #stack 
 ```python
