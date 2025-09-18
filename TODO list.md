@@ -11,7 +11,7 @@
 - ~~Reading in graph input (all the different types)~~
 - Simple BFS in python for implicit graphs
 - ~~Templates for reading in common input patterns~~
-- Pick's theorem
+- ~~Pick's theorem~~
 - ~~Root finding algorithms (bisection, Newton's method)~~
 - Optimization algorithms (golden section search, gradient descent)
 - Solving systems of linear equations
