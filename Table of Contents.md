@@ -1,5 +1,5 @@
 # Python
-- [[Miscellaneous]]
+- [[Python/Miscellaneous]]
 - [[Data Structures Python]]
 
 # C++
