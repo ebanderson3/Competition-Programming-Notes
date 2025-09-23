@@ -1,4 +1,38 @@
 #graph #cpp
+# Reading in a graph
+## Adjacency list
+```cpp
+// undirected & unweighted
+vector<vector<int>> adj(N+1, vector<int>);
+// N+1 because most graph problem number nodes from 1..N, so 0 goes unused
+
+for (int i = 0; i < N; i++) {
+	int a, b;
+	cin >> a >> b;
+	
+	adj[a].push_back(b);
+	adj[b].push_back(a);
+}
+
+// directed & weighted
+vector<vector<pair<int, int>>> adj(N+1, vector<pair<int, int>>);
+for (int i = 0; i < N; i++) {
+	int a, b, w;
+	cin >> a >> b >> w;
+	
+	adj[a].push_back({b, w});
+}
+```
+
+## Convert from adjacency list to adjacency matrix
+```cpp
+// implies you already have an adjacency list as defined above
+vector<vector<int>> adj_matrix(N+1, vector<int>(N+1, 0));
+
+for (int i = 0; i <= N; i++) {
+	for (auto j : adj[i]) adj_matrix[i][j] = 1; // or the weight of the edge
+}
+```
 # Shortest Path
 ## Dijkstra #dijkstra
 ```cpp
@@ -40,6 +74,101 @@ reverse(path.begin(), path.end();
 return path;
 ```
 
+# All pairs shortest path (Floyd-Warshall)
+```cpp
+for (int i = 1; i <= N; i++) {
+	for (int j = 1; j <= N; j++) {
+		if (i==j) dist[i][j] = 0
+		else if (adj[i][j]) dist[i][j] = adj[i][j];
+		else dist[i][j] = INF;
+	}
+}
+
+for (int k = 1; k <= n; k++) {
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+		}
+	}
+}
+```
+
+# Shortest path with negative weights (Bellman-Ford)
+```cpp
+// implies we have an edge list
+vector<int> bellmanFord(int n, vector<vector<int>>& edges, int src) {
+    const int INF = INT_MAX;
+    vector<int> dist(n, INF);
+    dist[src] = 0;
+    
+    for (int i = 0; i < n - 1; ++i) {
+        for (const auto& edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+            if (dist[u] != INF && dist[u] + w < dist[v]) {
+                dist[v] = dist[u] + w;
+            }
+        }
+    }
+    
+    for (const auto& edge : edges) {
+        int u = edge[0];
+        int v = edge[1];
+        int w = edge[2];
+        if (dist[u] != INF && dist[u] + w < dist[v]) {
+            return vector<int>(); // negative cycle found
+        }
+    }
+    
+    return dist;
+}
+```
+
+# Topological sort
+```cpp
+vector<int> topologicalSort(int n, vector<vector<int>>& adj) {
+    // Calculate in-degree of each node
+    vector<int> in_degree(n, 0);
+    for (int i = 0; i < n; i++) {
+        for (int neighbor : graph[i]) {
+            in_degree[neighbor]++;
+        }
+    }
+    
+    // Initialize queue with all nodes having in-degree 0
+    queue<int> q;
+    for (int i = 0; i < n; i++) {
+        if (in_degree[i] == 0) {
+            q.push(i);
+        }
+    }
+    
+    vector<int> result;
+    int count = 0;
+    
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        result.push_back(node);
+        count++;
+    
+        for (int neighbor : graph[node]) {
+            in_degree[neighbor]--;
+            if (in_degree[neighbor] == 0) {
+                q.push(neighbor);
+            }
+        }
+    }
+    
+    if (count != n) {
+        // cycle detected
+        return {};
+    }
+    
+    return result;
+}
+```
 # Minimum Spanning Tree #spanning_tree #MST
 
 ## Kruskal's MST O($E$ log $E$)
