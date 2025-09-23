@@ -1,17 +1,17 @@
-- Python cheat sheets
+- ~~Python cheat sheets~~
 - Expand the math section
 	- Search through many previous competitions to find math concepts that are used
 	- maybe into a folder
 - Maze solving template
-- More advanced data structures
+- ~~More advanced data structures~~
 - Check if fenwick tree works/Make a better fenwick tree
-- Find more library algorithms (python especially)
-- Python combinatorics notes
-- Set theory cheat sheet (math)
-- Reading in graph input (all the different types)
+- ~~Find more library algorithms (python especially)~~
+- ~~Python combinatorics notes~~
+- ~~Set theory cheat sheet (math)~~
+- ~~Reading in graph input (all the different types)~~
 - Simple BFS in python for implicit graphs
-- Templates for reading in common input patterns
-- Pick's theorem
+- ~~Templates for reading in common input patterns~~
+- ~~Pick's theorem~~
 - ~~Root finding algorithms (bisection, Newton's method)~~
 - Optimization algorithms (golden section search, gradient descent)
 - Solving systems of linear equations
@@ -24,7 +24,8 @@
 - Algorithm for finding the intersection of polygons
 - Triangulation algorithm (ear clipping algorithm)
 - Graph covering problem (Vertex Cover)
-- Itertools studying
+- ~~Itertools studying~~
 - Modular arithmetic
 - Templates
 - Graph cycle counting
+- Flow graph problems
