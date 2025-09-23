@@ -58,40 +58,6 @@ def calculate_degrees(graph, n, directed=False):
         for u in range(n):
             degree[u] = len(graph.get(u, []))
         return degree
-
-def degree_statistics(graph, n, directed=False):
-    """
-    Comprehensive degree statistics
-    Time: O(V + E)
-    Space: O(V)
-    """
-    if directed:
-        in_deg, out_deg = calculate_degrees(graph, n, True)
-        
-        stats = {
-            'in_degree': in_deg,
-            'out_degree': out_deg,
-            'sources': [i for i in range(n) if in_deg[i] == 0 and out_deg[i] > 0],
-            'sinks': [i for i in range(n) if out_deg[i] == 0 and in_deg[i] > 0],
-            'isolated': [i for i in range(n) if in_deg[i] == 0 and out_deg[i] == 0],
-            'max_in': max(in_deg) if in_deg else 0,
-            'max_out': max(out_deg) if out_deg else 0,
-            'avg_degree': sum(in_deg) / n if n > 0 else 0
-        }
-    else:
-        degree = calculate_degrees(graph, n, False)
-        
-        stats = {
-            'degree': degree,
-            'leaves': [i for i in range(n) if degree[i] == 1],
-            'isolated': [i for i in range(n) if degree[i] == 0],
-            'max_degree': max(degree) if degree else 0,
-            'min_degree': min(degree) if degree else 0,
-            'avg_degree': sum(degree) / n if n > 0 else 0,
-            'degree_sequence': sorted(degree, reverse=True)
-        }
-    
-    return stats
 ```
 <div class="page-break" style="page-break-before: always;"></div>
 
