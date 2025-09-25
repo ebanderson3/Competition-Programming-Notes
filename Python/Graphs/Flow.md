@@ -1,4 +1,19 @@
 # Dinic's Algorithm (Faster Maximum Flow)
+**What it does:** Finds maximum flow from source to sink in a flow network using level graphs and blocking flows
+**Requirements:**
+- Flow network with capacities
+- Source and sink nodes
+- Adjacency list with edge capacities
+**When to use:**
+- Maximum flow problems
+- Minimum cut problems
+- Bipartite matching
+- Network capacity problems
+- Assignment problems
+**Complexity:**
+- Time: O(V² × E) general, O(E × √V) for unit capacities
+- Space: O(V + E)
+**Key insight:** Build level graph with BFS, send blocking flows with DFS, repeat until no augmenting path
 ```python
 class Dinic:
     def __init__(self, n):
@@ -62,6 +77,21 @@ class Dinic:
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Cost Maximum Flow
+**What it does:** Finds maximum flow with minimum total cost where edges have both capacity and cost
+**Requirements:**
+- Flow network with capacities and costs
+- Source and sink nodes
+- No negative cycles initially
+**When to use:**
+- Transportation problems with costs
+- Assignment problems with preferences
+- Supply chain optimization
+- Minimum cost bipartite matching
+- Network flow with economic constraints
+**Complexity:**
+- Time: O(V × E² × log V) with Dijkstra and potentials
+- Space: O(V + E)
+**Key insight:** Use successive shortest path algorithm with potentials to handle negative costs efficiently
 ```python
 import heapq
 

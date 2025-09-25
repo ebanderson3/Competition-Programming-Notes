@@ -1,4 +1,19 @@
 # Bipartite Detection and 2-Coloring
+**What it does:** Checks if graph can be colored with 2 colors (bipartite) and finds the actual partition/odd cycle
+**Requirements:**
+- Undirected graph as adjacency list
+- BFS/DFS for coloring
+- Parent tracking for cycle reconstruction
+**When to use:**
+- Checking if graph is bipartite
+- Team division problems
+- Scheduling conflicts
+- Finding odd cycles
+- Prerequisite for bipartite matching
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Graph is bipartite iff it has no odd cycles; use BFS to 2-color, conflict means odd cycle
 ```python
 from collections import deque
 
@@ -88,6 +103,21 @@ def find_odd_cycle(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Maximum Bipartite Matching - Hungarian Algorithm
+**What it does:** Finds minimum/maximum cost perfect matching in weighted bipartite graphs
+**Requirements:**
+- Cost matrix (n×m)
+- Complete bipartite graph or padding
+- For max cost, negate weights
+**When to use:**
+- Assignment problems with costs
+- Job-worker optimal assignment
+- Resource allocation
+- Perfect matching with min/max cost
+- Dense bipartite graphs
+**Complexity:**
+- Time: O(n³) where n is smaller partition size
+- Space: O(n²)
+**Key insight:** Iteratively adjust costs to find augmenting paths maintaining zero-cost edges
 ```python
 def hungarian_algorithm(cost_matrix):
     """
@@ -167,6 +197,21 @@ def kuhn_matching(graph, n_left, n_right):
 ```
 <div class="page-break" style="page-break-before: always;"></div>
 # Hopcroft-Karp Algorithm (Fastest Bipartite Matching)
+**What it does:** Finds maximum bipartite matching using simple DFS augmenting paths
+**Requirements:**
+- Bipartite graph as adjacency list
+- Left and right partition sizes
+- DFS for augmenting paths
+**When to use:**
+- Maximum bipartite matching
+- Sparse bipartite graphs
+- Simple implementation needed
+- Job assignment without costs
+- Small to medium graphs
+**Complexity:**
+- Time: O(V × E)
+- Space: O(V)
+**Key insight:** Repeatedly find augmenting paths with DFS; each path increases matching by 1
 ```python
 rom collections import deque
 

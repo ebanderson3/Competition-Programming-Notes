@@ -1,5 +1,19 @@
 All of these are basically in $O(V + E)$ time.
 # Find connected components in an undirected graph (DFS)
+**What it does:** Identifies all connected components in an undirected graph and assigns component IDs to nodes
+**Requirements:**
+- Undirected graph as adjacency list
+- Number of nodes n
+**When to use:**
+- Graph partitioning
+- Finding isolated subgraphs
+- Network analysis
+- Counting disconnected parts
+- Preprocessing for other algorithms
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Run DFS from each unvisited node; each DFS traversal finds one complete component
 ```python
 def connected_components_dfs(graph, n):
     """
@@ -44,6 +58,21 @@ def get_component_nodes(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Strongly Connected Components - Tarjan's Algorithm
+**What it does:** Finds all strongly connected components (SCCs) in a directed graph where every node can reach every other node in the SCC
+**Requirements:**
+- Directed graph as adjacency list
+- Stack for tracking current path
+- Low-link values for each node
+**When to use:**
+- Condensing directed graphs
+- Finding cycles in directed graphs
+- Dependency analysis
+- Dead code detection
+- Social network analysis (mutual connections)
+**Complexity:**
+- Time: O(V + E) - single DFS pass
+- Space: O(V)
+**Key insight:** Uses DFS with stack and low-link values; when low-link equals index, found SCC root
 ```python
 def scc_tarjan(graph, n):
     """
@@ -94,6 +123,21 @@ def scc_tarjan(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Bridge Finding
+**What it does:** Finds all bridges (cut edges) in an undirected graph - edges whose removal disconnects the graph
+**Requirements:**
+- Undirected graph as adjacency list
+- Discovery time and low values
+- Parent tracking in DFS tree
+**When to use:**
+- Network vulnerability analysis
+- Finding critical connections
+- Circuit design weak points
+- Transportation bottlenecks
+- Graph connectivity problems
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Edge u-v is a bridge if low\[v] > disc\[u] (v cannot reach back to u or earlier without using edge u-v)
 ```python
 def find_bridges(graph, n):
     """
@@ -132,8 +176,24 @@ def find_bridges(graph, n):
     
     return bridges
 ```
+<div class="page-break" style="page-break-before: always;"></div>
 
 # Articulation Point Finding (Cut Vertices)
+**What it does:** Finds all articulation points - vertices whose removal increases the number of connected components
+**Requirements:**
+- Undirected graph as adjacency list
+- Discovery time and low values
+- Parent and children tracking
+**When to use:**
+- Finding critical nodes in networks
+- Vulnerability analysis
+- Network reliability
+- Finding bottleneck vertices
+- Graph robustness testing
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Node u is articulation point if: (1) root with >1 child, or (2) non-root where child v cannot reach ancestors of u (low\[v] >= disc\[u])
 ```python
 def find_articulation_points(graph, n):
     """

@@ -1,4 +1,17 @@
 # Cycle Detection in Undirected Graph (Using DFS)
+**What it does:** Detects if an undirected graph contains any cycle using depth-first search
+**Requirements:**
+- Undirected graph as adjacency list
+- Track parent during DFS traversal
+**When to use:**
+- Checking if graph is a tree (connected + no cycles)
+- Detecting redundant connections
+- Network loop detection
+- Graph validation problems
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V) for visited array + recursion stack
+**Key insight:** If we visit a node that's already visited and it's not our parent, we found a cycle
 ```python
 def has_cycle_undirected_dfs(graph, n):
     """
@@ -30,6 +43,19 @@ def has_cycle_undirected_dfs(graph, n):
 ```
 
 # Cycle Detection in Undirected Graph (Using Union-Find)
+**What it does:** Detects cycles in undirected graph by checking if edge endpoints are already connected
+**Requirements:**
+- Edge list representation
+- Union-Find data structure
+**When to use:**
+- Online cycle detection (edges added incrementally)
+- When edges are given as list
+- Finding redundant connections
+- Kruskal's MST algorithm
+**Complexity:**
+- Time: O(E × α(V)) where α is inverse Ackermann function ≈ O(E)
+- Space: O(V) for Union-Find structure
+**Key insight:** If two nodes are already in same component when adding edge, it creates a cycle
 ```python
 class UnionFind:
     def __init__(self, n):
@@ -73,6 +99,21 @@ def has_cycle_undirected_uf(edges, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Find All Cycles in Directed Graph
+**What it does:** Finds and returns all cycles in a directed graph using DFS coloring
+**Requirements:**
+- Directed graph as adjacency list
+- Three-color DFS (white=0, gray=1, black=2)
+- Path tracking during DFS
+**When to use:**
+- Dependency cycle detection
+- Deadlock detection
+- Finding all circular references
+- Analyzing feedback loops
+- Course prerequisite validation
+**Complexity:**
+- Time: O(V + E) for detection, O(V × (V + E)) to find all cycles
+- Space: O(V) for colors and path
+**Key insight:** Use three colors: white (unvisited), gray (in current path), black (finished); cycle exists when reaching gray node
 ```python
 def find_all_cycles_directed(graph, n):
     """

@@ -1,5 +1,19 @@
 Passes through each node once.
 # Hamiltonian Path using Dynamic Programming (Bitmask DP)
+**What it does:** Finds if a Hamiltonian path exists (visiting each node exactly once) using bitmask DP
+**Requirements:**
+- Adjacency list representation
+- Small number of nodes (n ≤ 20 typically)
+- Nodes numbered 0 to n-1
+**When to use:**
+- Finding Hamiltonian path/cycle
+- Traveling Salesman Problem (TSP)
+- Path covering all nodes
+- Small graphs where exponential complexity is acceptable
+**Complexity:**
+- Time: O(n² × 2ⁿ)
+- Space: O(n × 2ⁿ)
+**Key insight:** Use bitmask to represent visited nodes, dp[mask][i] = can reach node i visiting exactly nodes in mask
 ```python
 def hamiltonian_path_dp(graph, n):
     """
@@ -60,6 +74,20 @@ def reconstruct_path(parent, mask, end, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Hamiltonian Path with Specific Start and End
+**What it does:** Finds Hamiltonian path from specific start to end node using backtracking
+**Requirements:**
+- Adjacency list representation
+- Specified start and end nodes
+- Small to medium graphs (backtracking)
+**When to use:**
+- Fixed endpoint Hamiltonian path
+- Route planning visiting all locations
+- When DP approach uses too much memory
+- Need actual path, not just existence
+**Complexity:**
+- Time: O(n!) worst case, often much better with pruning
+- Space: O(n) for recursion stack and visited array
+**Key insight:** Backtrack with pruning, early termination when all nodes visited but not at end
 ```python
 def hamiltonian_path_fixed_endpoints(graph, n, start, end):
     """

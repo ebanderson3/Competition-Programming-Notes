@@ -37,6 +37,20 @@ COMMON PITFALLS:
 - Using O(V²) Prim's on sparse graphs
 ```
 # Kruskal's Algorithm (Edge-based MST)
+**What it does:** Finds minimum/maximum spanning tree by sorting edges and greedily adding them if they don't create cycles
+**Requirements:**
+- Edge list format: \[(weight, u, v), ...]
+- Number of nodes n
+- Union-Find data structure
+**When to use:**
+- Finding minimum/maximum spanning tree
+- Sparse graphs (few edges)
+- When edges are given directly
+- Network design problems (minimum cost to connect all nodes)
+**Complexity:**
+- Time: O(E log E) for sorting + O(E α(V)) for union-find ≈ O(E log E)
+- Space: O(V) for Union-Find
+**Key insight:** Sort edges by weight, add smallest edges that don't form cycles
 ```python
 class UnionFind:
     def __init__(self, n):
@@ -106,6 +120,20 @@ def kruskal_maximum(edges, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Prim's Algorithm (Vertex-based MST)
+What it does: Builds MST by growing from a starting vertex, always adding minimum weight edge to unvisited vertex
+Requirements:
+    Adjacency list representation
+    Priority queue (heap)
+    Starting vertex
+When to use:
+    Dense graphs (many edges)
+    When graph is given as adjacency list
+    Need to start from specific vertex
+    Real-time MST construction
+Complexity:
+    Time: O(E log V) with binary heap, O(E + V log V) with Fibonacci heap
+    Space: O(V)
+Key insight: Grow MST one vertex at a time, always choosing minimum edge to new vertex
 ```python
 class UnionFind:
     def __init__(self, n):
@@ -175,6 +203,21 @@ def kruskal_maximum(edges, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Bottleneck Spanning Tree
+What it does: Finds spanning tree that minimizes the maximum edge weight in the tree
+Requirements:
+    Edge list format
+    Number of nodes n
+    Union-Find structure
+When to use:
+    Minimize maximum edge weight in path
+    Network reliability (weakest link problems)
+    Bottleneck path queries between nodes
+    Note: Any MST is also a bottleneck spanning tree
+Complexity:
+    Time: O(E log E) for construction
+    Space: O(V)
+    Query time: O(V) per query with DFS
+Key insight: Regular MST algorithms automatically produce bottleneck spanning trees
 ```python
 def bottleneck_spanning_tree(edges, n):
     """
@@ -242,6 +285,20 @@ def bottleneck_path_query(graph, n, queries):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Spanning Forest (Disconnected Graphs)
+What it does: Finds MST for each connected component in a disconnected graph
+Requirements:
+    Edge list format
+    Number of nodes n
+    Graph may be disconnected
+When to use:
+    Graph with multiple components
+    Need separate MSTs for each component
+    Counting connected components
+    Network partitioning problems
+Complexity:
+    Time: O(E log E)
+    Space: O(V)
+Key insight: Run MST algorithm normally; it naturally handles disconnected components
 ```python
 def minimum_spanning_forest(edges, n):
     """
@@ -273,6 +330,20 @@ def minimum_spanning_forest(edges, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Dynamic MST (Add/Remove Edges)
+**What it does:** Maintains MST while allowing edge additions and deletions
+**Requirements:**
+- Initial graph (can be empty)
+- Efficient recomputation strategy
+**When to use:**
+- Evolving networks
+- Online MST maintenance
+- Interactive graph problems
+- Note: Full dynamic MST is complex; shown version recomputes from scratch
+**Complexity:**
+- Time: O(E log E) per update (naive recomputation)
+- Space: O(E + V)
+- Better algorithms exist with O(log^4 n) amortized update time
+**Key insight:** Simple version recomputes MST after each change; advanced versions use link-cut trees
 ```python
 class DynamicMST:
     """

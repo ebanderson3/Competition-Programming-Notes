@@ -36,6 +36,20 @@ OPTIMIZATION TIPS:
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Basic Degree Calculations
+**What it does:** Calculates degree (number of edges) for each node; in/out-degree for directed graphs
+**Requirements:**
+- Graph as adjacency list
+- Directed/undirected flag
+**When to use:**
+- Graph statistics
+- Finding hubs/leaves
+- Preprocessing for other algorithms
+- Eulerian path checking
+- Network analysis basics
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Degree is fundamental graph property; many algorithms depend on degree information
 ```python
 def calculate_degrees(graph, n, directed=False):
     """
@@ -62,6 +76,21 @@ def calculate_degrees(graph, n, directed=False):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Node Centrality Measures
+**What it does:** Calculates various centrality metrics (betweenness, closeness, degree) to identify important nodes
+**Requirements:**
+- Graph as adjacency list
+- BFS/shortest paths for calculations
+**When to use:**
+- Finding influential nodes
+- Network analysis
+- Social network analysis
+- Critical node identification
+- PageRank-like problems
+**Complexity:**
+- Betweenness: O(V × E)
+- Closeness: O(V × (V + E))
+- Degree: O(V + E)
+**Key insight:** Different centrality measures capture different aspects of node importance
 ```python
 from collections import deque
 
@@ -158,6 +187,21 @@ def degree_centrality(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Edge Classification and Properties
+**What it does:** Classifies edges as tree/back/forward/cross edges and finds multi-edges/self-loops
+**Requirements:**
+- Directed graph for classification
+- DFS with timing information
+- Edge counting for multi-edges
+**When to use:**
+- Understanding graph structure
+- Cycle detection details
+- DFS tree analysis
+- Finding parallel edges
+- Graph validation
+**Complexity:**
+- Classification: O(V + E)
+- Multi-edge detection: O(E)
+**Key insight:** Edge types reveal graph structure; tree edges form DFS tree, back edges create cycles
 ```python
 def classify_edges_dfs(graph, n):
     """
@@ -234,6 +278,20 @@ def find_multi_edges(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Node Distance and Eccentricity
+**What it does:** Calculates eccentricity (max distance from node), diameter, radius, and center of graph
+**Requirements:**
+- Graph as adjacency list
+- All-pairs shortest paths
+**When to use:**
+- Network diameter analysis
+- Finding graph center
+- Peripheral node detection
+- Graph compactness metrics
+- Communication network design
+**Complexity:**
+- Time: O(V × (V + E))
+- Space: O(V)
+**Key insight:** Eccentricity measures how far a node is from the farthest node; center minimizes this
 ```python
 def eccentricity(graph, n):
     """
@@ -314,6 +372,20 @@ def distance_distribution(graph, n, source):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Clustering and Triangle Counting
+**What it does:** Counts triangles and calculates clustering coefficients measuring local connectivity
+**Requirements:**
+- Undirected graph
+- Neighbor intersection operations
+**When to use:**
+- Social network analysis
+- Community detection
+- Graph density analysis
+- Small-world network detection
+- Recommendation systems
+**Complexity:**
+- Time: O(V × d²) where d is max degree
+- Space: O(V)
+**Key insight:** High clustering means node's neighbors are also connected to each other
 ```python
 def count_triangles(graph, n):
     """
@@ -388,6 +460,20 @@ def node_triangle_count(graph, n):
 ```
 
 # K-Core Decomposition
+**What it does:** Finds k-core subgraphs where every node has degree ≥ k within the subgraph
+**Requirements:**
+- Graph as adjacency list
+- Degree buckets for efficiency
+**When to use:**
+- Finding dense subgraphs
+- Community detection
+- Graph visualization
+- Network robustness analysis
+- Influential group detection
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Iteratively remove nodes with degree < k; remaining nodes form k-core
 ```python
 def k_core_decomposition(graph, n):
     """
@@ -538,6 +624,20 @@ def chromatic_polynomial_small(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Path and Connectivity Metrics
+**What it does:** Calculates node connectivity between pairs (min nodes to remove to disconnect) and transitive closure
+**Requirements:**
+- Max flow algorithms for connectivity
+- Floyd-Warshall for all-pairs
+**When to use:**
+- Network reliability analysis
+- Finding bottleneck nodes
+- Menger's theorem applications
+- Graph robustness testing
+- Reachability queries
+**Complexity:**
+- Node connectivity: O(V × E²) with max flow
+- All-pairs: O(V³)
+**Key insight:** Node connectivity = max node-disjoint paths (Menger's theorem); use node splitting for max flow
 ```python
 def node_connectivity(graph, n, s, t):
     """

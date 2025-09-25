@@ -24,6 +24,21 @@ WHICH ALGORITHM TO USE?
    └─ NO → Standard Dijkstra
 ```
 # Dijkstra's Algorithm
+**What it does:** Finds shortest paths from source to all other nodes in weighted graph with non-negative weights
+**Requirements:**
+- Non-negative edge weights
+- Adjacency list with weights
+- Priority queue (min-heap)
+**When to use:**
+- Single-source shortest paths
+- GPS/routing problems
+- Network routing
+- Game pathfinding
+- When all weights are non-negative
+**Complexity:**
+- Time: O((V + E) log V) with binary heap
+- Space: O(V)
+**Key insight:** Greedily expand shortest known distance using priority queue
 ```python
 import heapq
 
@@ -43,6 +58,21 @@ def dijkstra(n, src):
 ```
 
 # Bellman-Ford Algorithm (Handles Negative Weights)
+**What it does:** Finds shortest paths from source to all nodes, handles negative weights and detects negative cycles
+
+**Requirements:**
+- Edge list format: \[(u, v, weight), ...]
+- Can have negative weights
+- Source node
+**When to use:**
+- Graphs with negative edge weights
+- Detecting negative cycles
+- Currency arbitrage detection
+- When Dijkstra can't be used due to negative weights
+**Complexity:**
+- Time: O(V × E)
+- Space: O(V)
+**Key insight:** Relax all edges V-1 times; if Vth iteration changes distances, negative cycle exists
 ```python
 def bellman_ford(edges, n, source):
     """
@@ -73,6 +103,20 @@ def bellman_ford(edges, n, source):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # 0-1 BFS
+**What it does:** Finds shortest paths in graphs where all edge weights are either 0 or 1
+**Requirements:**
+- Graph with only 0 and 1 edge weights
+- Deque data structure
+- Adjacency list representation
+**When to use:**
+- Unweighted/binary weighted graphs
+- Grid problems with free/costly moves
+- State graphs with free transitions
+- Much faster than Dijkstra for 0-1 graphs
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Use deque; add 0-weight edges to front, 1-weight edges to back
 ```python
 from collections import deque
 

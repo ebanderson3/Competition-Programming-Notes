@@ -31,6 +31,21 @@ Common Pitfalls:
 - Using Fleury's in competition (too slow!)
 ```
 # Eulerian Path/Circuit Detection (Undirected)
+**What it does:** Determines if an undirected graph has an Eulerian path (visits every edge once) or circuit (path that returns to start)
+**Requirements:**
+- Undirected graph as adjacency list
+- Connected graph (for edges that exist)
+- Degree count for each vertex
+**When to use:**
+- Route planning visiting all roads once
+- Drawing figures without lifting pen
+- DNA fragment assembly
+- Network traversal problems
+- Checking if graph can be drawn in one stroke
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Circuit exists if all vertices have even degree; path exists if exactly 2 vertices have odd degree
 ```python
 def is_eulerian_undirected(graph, n):
     """
@@ -94,6 +109,21 @@ def is_eulerian_undirected(graph, n):
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Eulerian Path/Circuit Detection (Directed)
+**What it does:** Determines if a directed graph has an Eulerian path or circuit considering edge directions
+**Requirements:**
+- Directed graph as adjacency list
+- In-degree and out-degree arrays
+- Weakly connected graph
+**When to use:**
+- One-way street routing
+- Process flow optimization
+- Directed network traversal
+- De Bruijn sequences
+- Word chain puzzles
+**Complexity:**
+- Time: O(V + E)
+- Space: O(V)
+**Key insight:** Circuit needs in-degree = out-degree for all vertices; path needs exactly one vertex with out-degree = in-degree + 1 and one with in-degree = out-degree + 1
 ```python
 def is_eulerian_directed(graph, n):
     """

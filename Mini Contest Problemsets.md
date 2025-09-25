@@ -1,8 +1,8 @@
 All problemsets are in ascending order of difficulty
 
 Set A:
-- https://open.kattis.com/problems/babybites (1.5) Simulation, String Parsing
-- https://open.kattis.com/problems/quickbrownfox (1.5) String Processing
+- https://open.kattis.com/problems/babybites (1.5) Simulation, String Parsing 93%
+- https://open.kattis.com/problems/quickbrownfox (1.5) String Processing 
 - https://open.kattis.com/problems/safehouses (2.0) Breadth-First Search (BFS), Multi-Source Shortest Path
 - https://open.kattis.com/problems/countingstars (2.5) Graph Theory (specifically Connected Components or Flood Fill)
 - https://open.kattis.com/problems/addingwords (2.7) Simulation, Arithmetic Parsing
