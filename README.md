@@ -13,7 +13,7 @@
 Algorithms
 [[Algorithms]]
 [[Combinatorics]]
-[[Dynamic Programming]]
+[[C++/Dynamic Programming]]
 [[C++/Graphs]]
-[[Math]]
+[[C++/Math]]
 
