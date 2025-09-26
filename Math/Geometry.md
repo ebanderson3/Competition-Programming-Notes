@@ -3,13 +3,13 @@ Find the intersection between the line segment defined by $a_1$ and $a_2$, and t
 
 ```python
 def line_intersection(a1, a2, b1, b2) -> bool:
-	av = (a2[0] - a1[0], a2[1] - a1[1])
-	bv = (b2[0] - b1[0], b2[1] - b1[1])
-	c = (b1[0] - a1[0], b1[1] - a1[1])
+	av = a2 - a1
+	bv = b2 - b1
+	c = b1 - a1
 	
-	d = bv[0] * av[1] - bv[1] * av[0]
-	t = (c[0] * -bv[1] + bv[0] * c[1]) / d
-	s = (av[0] * c[1] - c[0] * av[1]) / d
+	d = bv.real * av.imag - bv.imag * av.real
+	t = (c.real * -bv.imag + bv.real * c.imag) / d
+	s = (av.real * c.imag - c.real * av.imag) / d
 	
 	return 0 <= t <= 1 and 0 <= s <= 1
 ```
@@ -39,22 +39,33 @@ Find the closest point on a line or line segment.
 
 ```python
 def closest_point_on_line(a: complex, b: complex, p: complex) -> complex:
-	r = b - a
-	
+	v = b - a
 	k = p - a
-	t = k.real * r.real + k.imag * r.imag # k dot r
-	t /= abs(r) * abs(r)
 	
-	return a + r * t
+	t = k.real * v.real + k.imag * v.imag # k dot v
+	t /= abs(v) * abs(v)
+	
+	return a + v * t
 
 def closest_point_on_line_segment(a: complex, b: complex, p: complex) -> complex:
-	r = b - a
-	
+	v = b - a
 	k = p - a
-	t = k.real * r.real + k.imag * r.imag # k dot r
-	t /= abs(r) * abs(r)
+	
+	t = k.real * v.real + k.imag * v.imag # k dot v
+	t /= abs(v) * abs(v)
 	
 	t = min(1, max(0, t))
 	
-	return a + r * t
+	return a + v * t
+
+def distance_to_line_segment(a: complex, b: complex, p: complex) -> float:
+	v = b - a
+	k = p - a
+	
+	t = k.real * v.real + k.imag * v.imag # k dot v
+	t /= abs(v) * abs(v)
+	
+	t = min(1, max(0, t))
+
+	return abs(a + v * t - p)
 ```
