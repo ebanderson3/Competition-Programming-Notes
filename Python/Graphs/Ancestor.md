@@ -15,6 +15,7 @@
 - Per query: O(log n) time
 - Space: O(n log n) for binary lifting table
 **Key insight:** Jumps up the tree in powers of 2 for efficient ancestor queries
+
 ```python
 import sys
 sys.setrecursionlimit(10**7)
@@ -22,14 +23,16 @@ sys.setrecursionlimit(10**7)
 def build_lca(adj, root=1):
     n = len(adj) - 1
     LOG = (n).bit_length()
-    depth = [0]*(n+1)
-    up = [[-1]*(LOG+1) for _ in range(n+1)]
+    depth = [0] * (n + 1)
+    up = [[-1] * (LOG + 1) for _ in range(n + 1)]
 
     def dfs(u, p):
         up[u][0] = p
-        for j in range(1, LOG+1):
-            if up[u][j-1] != -1:
-                up[u][j] = up[up[u][j-1]][j-1]
+        
+        for j in range(LOG):
+            if up[u][j] != -1:
+                up[u][j + 1] = up[up[u][j]][j]
+        
         for v in adj[u]:
             if v != p:
                 depth[v] = depth[u] + 1
@@ -41,20 +44,25 @@ def build_lca(adj, root=1):
 def lca(u, v, up, depth, LOG):
     if depth[u] < depth[v]:
         u, v = v, u
+    
     diff = depth[u] - depth[v]
+    
     for j in range(LOG+1):
         if diff & (1 << j):
             u = up[u][j]
-    if u == v:
-        return u
+    
+    if u == v: return u
+    
     for j in reversed(range(LOG+1)):
         if up[u][j] != up[v][j]:
             u = up[u][j]
             v = up[v][j]
+    
     return up[u][0]
 
 def distance(u, v, up, depth, LOG):
     """Distance between u and v in edges"""
     w = lca(u, v, up, depth, LOG)
+    
     return depth[u] + depth[v] - 2*depth[w]
 ```
