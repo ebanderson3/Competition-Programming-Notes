@@ -18,7 +18,7 @@
 - Advance string search algorithms
 - Chinese remainder theorem
 - Integration algorithms (Simpson's rule)
-- Line intersection tests
+- ~~Line intersection tests~~
 - AABB intersection tests
 - Signed distance field formulas for common shapes
 - Algorithm for finding the intersection of polygons
