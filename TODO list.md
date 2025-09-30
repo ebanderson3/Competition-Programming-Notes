@@ -42,3 +42,4 @@
 	-  Minimum enclosing circle
 	- Which side of a line a point is on
 - Miller–Rabin primality test
+- Multiplicative inverse
