@@ -23,9 +23,19 @@
 - Signed distance field formulas for common shapes
 - Algorithm for finding the intersection of polygons
 - Triangulation algorithm (ear clipping algorithm)
-- Graph covering problem (Vertex Cover)
+- ~~Graph covering problem (Vertex Cover)~~
 - ~~Itertools studying~~
 - Modular arithmetic
-- Templates
-- Graph cycle counting
-- Flow graph problems
+- ~~Graph cycle counting~~
+- ~~Flow graph problems~~
+- Find primes past 4B (Sieve extension)
+- Number Theory
+	- Cryptography
+	- Calculating big numbers
+	- Computing powers
+- Bottom-up DP solving
+- Geometry
+	- Find if something is between 2 angles
+	- Convex Hull
+	- Center of Mass
+	- Determining concavity or convexity

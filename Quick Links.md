@@ -1,3 +1,7 @@
+# The Ultimate Topic List
+https://youkn0wwho.academy/topic-list
+# Algorithms for Competition Programming
+https://cp-algorithms.com/
 # MCPC 2023
 https://mcpc23.kattis.com/contests/mcpc23/standings
 

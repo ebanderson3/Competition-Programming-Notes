@@ -159,3 +159,101 @@ class MinCostMaxFlow:
         
         return res
 ```
+
+```python
+from collections import defaultdict, deque
+
+class MaxFlowMinCut:
+    def __init__(self, n):
+        self.n = n
+        self.graph = defaultdict(lambda: defaultdict(int))
+        self.original_graph = defaultdict(lambda: defaultdict(int))
+    
+    def add_edge(self, u, v, capacity):
+        """Add edge with given capacity"""
+        self.graph[u][v] += capacity
+        self.original_graph[u][v] += capacity
+    
+    def bfs(self, source, sink, parent):
+        """BFS to find augmenting path from source to sink"""
+        visited = set([source])
+        queue = deque([source])
+        
+        while queue:
+            u = queue.popleft()
+            
+            for v in self.graph[u]:
+                if v not in visited and self.graph[u][v] > 0:
+                    visited.add(v)
+                    parent[v] = u
+                    if v == sink:
+                        return True
+                    queue.append(v)
+        
+        return False
+    
+    def ford_fulkerson(self, source, sink):
+        """
+        Find maximum flow using Ford-Fulkerson
+        Time: O(E * max_flow) for integer capacities
+        Space: O(V)
+        """
+        parent = {}
+        max_flow = 0
+        
+        # Find augmenting paths
+        while self.bfs(source, sink, parent):
+            # Find minimum capacity along path
+            path_flow = float('inf')
+            s = sink
+            
+            while s != source:
+                path_flow = min(path_flow, self.graph[parent[s]][s])
+                s = parent[s]
+            
+            # Update residual capacities
+            v = sink
+            while v != source:
+                u = parent[v]
+                self.graph[u][v] -= path_flow
+                self.graph[v][u] += path_flow
+                v = parent[v]
+            
+            max_flow += path_flow
+            parent = {}
+        
+        return max_flow
+    
+    def find_min_cut(self, source, sink):
+        """
+        Find minimum cut after computing max flow
+        Returns: (cut_value, source_side, sink_side, cut_edges)
+        """
+        # Run max flow first
+        max_flow = self.ford_fulkerson(source, sink)
+        
+        # Find reachable nodes from source in residual graph
+        visited = set()
+        queue = deque([source])
+        visited.add(source)
+        
+        while queue:
+            u = queue.popleft()
+            for v in self.graph[u]:
+                if v not in visited and self.graph[u][v] > 0:
+                    visited.add(v)
+                    queue.append(v)
+        
+        # Source side = reachable nodes, Sink side = rest
+        source_side = visited
+        sink_side = set(range(self.n)) - visited
+        
+        # Find cut edges (edges from source side to sink side)
+        cut_edges = []
+        for u in source_side:
+            for v in self.original_graph[u]:
+                if v in sink_side and self.original_graph[u][v] > 0:
+                    cut_edges.append((u, v, self.original_graph[u][v]))
+        
+        return max_flow, list(source_side), list(sink_side), cut_edges0
+```
