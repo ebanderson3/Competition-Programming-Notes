@@ -30,3 +30,9 @@
 - Graph cycle counting
 - Flow graph problems
 - Convex Hull
+- Point in polygon
+- Find angle between two lines
+- Polygon concavity
+- Point in triangle
+- Minimum enclosing circle
+- Which side of a line a point is on
