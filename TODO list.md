@@ -18,7 +18,7 @@
 - Advance string search algorithms
 - Chinese remainder theorem
 - Integration algorithms (Simpson's rule)
-- Line intersection tests
+- ~~Line intersection tests~~
 - AABB intersection tests
 - Signed distance field formulas for common shapes
 - Algorithm for finding the intersection of polygons
@@ -39,3 +39,6 @@
 	- Convex Hull
 	- Center of Mass
 	- Determining concavity or convexity
+	-  Minimum enclosing circle
+	- Which side of a line a point is on
+- Miller–Rabin primality test
