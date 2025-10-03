@@ -1,8 +1,8 @@
 # C++
-[[Data Structures C++]]
+[[C++ Basic Data Structures]]
 [[Advanced Data Structures]]
 [[Integer Sets]]
-[[Algorithm Library C++]]
+[[Algorithm]]
 [[C++ Miscellaneous Info]]
 [[C++/Input Reading]]
 [[Strings]]
@@ -11,9 +11,9 @@
 [[Data Structures Python]]
 
 Algorithms
-[[Algorithms]]
+[[Arrays]]
 [[Combinatorics]]
-[[C++/Dynamic Programming]]
+[[Dynamic Programming 1]]
 [[C++/Graphs]]
 [[C++/Math]]
 

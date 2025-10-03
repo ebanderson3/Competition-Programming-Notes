@@ -22,7 +22,7 @@ for (int i = 0; i < v.size(); i++) {
 }
 ```
 
-### O($n$ log $n$)
+### O($n \log n$)
 ```cpp
 // dp[i] is the value which is the minimum value that a LIS of length i will end at
 vector<int> dpLIS(v.size()+1, INT_MAX);

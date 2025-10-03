@@ -1,5 +1,5 @@
 #python #data_structures #ai
-See [[Data Structures C++]] instead
+See [[C++ Basic Data Structures]] instead
 
 - All containers use` len(container)` for size
 - Most have `.count(x)` to return how many times `x` appears (works for lists, tuples, strings — but **not** for sets or dicts).

@@ -14,6 +14,8 @@
 - Time: O(V + E)
 - Space: O(V) for queue and result
 **Key insight:** Process nodes with no incoming edges first, remove them and repeat
+
+### Python
 ```python
 from collections import deque
 
@@ -32,4 +34,48 @@ def topo_sort(n, indeg):
                 q.append(v)
     
     return order
+```
+### C++
+```cpp
+vector<int> topologicalSort(int n, vector<vector<int>>& adj) {
+    // Calculate in-degree of each node
+    vector<int> in_degree(n, 0);
+    for (int i = 0; i < n; i++) {
+        for (int neighbor : graph[i]) {
+            in_degree[neighbor]++;
+        }
+    }
+    
+    // Initialize queue with all nodes having in-degree 0
+    queue<int> q;
+    for (int i = 0; i < n; i++) {
+        if (in_degree[i] == 0) {
+            q.push(i);
+        }
+    }
+    
+    vector<int> result;
+    int count = 0;
+    
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        result.push_back(node);
+        count++;
+    
+        for (int neighbor : graph[node]) {
+            in_degree[neighbor]--;
+            if (in_degree[neighbor] == 0) {
+                q.push(neighbor);
+            }
+        }
+    }
+    
+    if (count != n) {
+        // cycle detected
+        return {};
+    }
+    
+    return result;
+}
 ```

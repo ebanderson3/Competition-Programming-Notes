@@ -1,3 +1,4 @@
+
 #cpp #data_structures
 See [[Data Structures Python]] instead
 # Notes

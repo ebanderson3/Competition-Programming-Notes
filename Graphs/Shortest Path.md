@@ -39,6 +39,8 @@ WHICH ALGORITHM TO USE?
 - Time: O((V + E) log V) with binary heap
 - Space: O(V)
 **Key insight:** Greedily expand shortest known distance using priority queue
+
+### Python
 ```python
 import heapq
 
@@ -56,6 +58,45 @@ def dijkstra(n, src):
                 dist[v] = d + w
                 heapq.heappush(pq, (dist[v], v))
 ```
+### C++
+```cpp
+vector<int> dist(N+1, INT_MAX);
+dist[1] = 0;
+// alternatively, we can do:
+// priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>
+priority_queue<pair<int, int>> pq;
+pq.push({0,1});
+// prev.assign(n, -1);
+vector<bool> vis(N+1, false);
+
+while (!pq.empty()) {
+     int a = pq.top().second; pq.pop();
+     if (vis[a]) continue;
+     vis[a] = true;
+     
+     for (auto [w, b] : adj[a]) {
+         if (dist[a] + w < dist[b]) {
+             dist[b] = dist[a] + w;
+// prev[b] = a;
+             pq.push({-dist[b], b});
+         }
+    }
+```
+### Reconstructing the path
+```cpp
+vector<int> path;
+
+if (prev[end] == -1 && end != start) return path;
+
+for (int at = end; at != -1; at = prev[at]) {
+	path.push_back(at);
+	if (at == start) break;
+}
+
+reverse(path.begin(), path.end();
+return path;
+```
+
 
 # Bellman-Ford Algorithm (Handles Negative Weights)
 **What it does:** Finds shortest paths from source to all nodes, handles negative weights and detects negative cycles
@@ -73,6 +114,8 @@ def dijkstra(n, src):
 - Time: O(V × E)
 - Space: O(V)
 **Key insight:** Relax all edges V-1 times; if Vth iteration changes distances, negative cycle exists
+
+### Python
 ```python
 def bellman_ford(edges, n, source):
     """
@@ -100,7 +143,57 @@ def bellman_ford(edges, n, source):
     
     return dist, parent
 ```
+### C++
+```cpp
+// implies we have an edge list
+vector<int> bellmanFord(int n, vector<vector<int>>& edges, int src) {
+    const int INF = INT_MAX;
+    vector<int> dist(n, INF);
+    dist[src] = 0;
+    
+    for (int i = 0; i < n - 1; ++i) {
+        for (const auto& edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+            if (dist[u] != INF && dist[u] + w < dist[v]) {
+                dist[v] = dist[u] + w;
+            }
+        }
+    }
+    
+    for (const auto& edge : edges) {
+        int u = edge[0];
+        int v = edge[1];
+        int w = edge[2];
+        if (dist[u] != INF && dist[u] + w < dist[v]) {
+            return vector<int>(); // negative cycle found
+        }
+    }
+    
+    return dist;
+}
+```
 <div class="page-break" style="page-break-before: always;"></div>
+
+# All pairs shortest path (Floyd-Warshall)
+```cpp
+for (int i = 1; i <= N; i++) {
+	for (int j = 1; j <= N; j++) {
+		if (i==j) dist[i][j] = 0
+		else if (adj[i][j]) dist[i][j] = adj[i][j];
+		else dist[i][j] = INF;
+	}
+}
+
+for (int k = 1; k <= n; k++) {
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+		}
+	}
+}
+```
 
 # 0-1 BFS
 **What it does:** Finds shortest paths in graphs where all edge weights are either 0 or 1

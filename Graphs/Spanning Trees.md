@@ -51,6 +51,8 @@ COMMON PITFALLS:
 - Time: O(E log E) for sorting + O(E α(V)) for union-find ≈ O(E log E)
 - Space: O(V) for Union-Find
 **Key insight:** Sort edges by weight, add smallest edges that don't form cycles
+
+### Python
 ```python
 class UnionFind:
     def __init__(self, n):
@@ -117,6 +119,39 @@ def kruskal_maximum(edges, n):
     
     return mst_weight, mst_edges
 ```
+### C++
+```cpp
+sort(edges.begin(), edges.end(), [](auto a, auto b){return a.w < b.w;});
+
+for (auto [a, b, w] : edges) {
+	if (!same(a, b)) {
+		unite(a, b);
+		// Do whatever you need to do with this edge which is present in the MST
+	}
+}
+```
+For most graph problems which require finding an MST, a fancy union find isn’t required since input sizes are generally smaller. The following implementation of find() and unite() will suffice.
+```cpp
+int find(vector<int>& d, int a) {
+	if(d[a] == -1) {
+	     return a;
+	}
+
+	return d[a] = find(d, d[a]);
+}
+
+void join(vector<int>& d, int a, int b) {
+
+	a = find(d, a);
+	b = find(d, b);
+	
+	if(a == b) {
+	     return;
+	}
+
+	d[a] = b;
+}
+```
 <div class="page-break" style="page-break-before: always;"></div>
 
 # Prim's Algorithm (Vertex-based MST)
@@ -134,71 +169,82 @@ Complexity:
     Time: O(E log V) with binary heap, O(E + V log V) with Fibonacci heap
     Space: O(V)
 Key insight: Grow MST one vertex at a time, always choosing minimum edge to new vertex
-```python
-class UnionFind:
-    def __init__(self, n):
-        self.parent = list(range(n))
-        self.rank = [0] * n
-    
-    def find(self, x):
-        if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])
-        return self.parent[x]
-    
-    def union(self, x, y):
-        px, py = self.find(x), self.find(y)
-        if px == py:
-            return False
-        if self.rank[px] < self.rank[py]:
-            self.parent[px] = py
-        elif self.rank[px] > self.rank[py]:
-            self.parent[py] = px
-        else:
-            self.parent[py] = px
-            self.rank[px] += 1
-        return True
 
-def kruskal(edges, n):
+### Python
+```python
+def prim(graph, n):
     """
-    Kruskal's algorithm for Minimum Spanning Tree
-    Time: O(E log E) for sorting + O(E α(V)) for union-find
-    Space: O(V)
-    edges: [(weight, u, v), ...]
+    Prim's algorithm for Minimum Spanning Tree
+    Time: O(E log V) using a priority queue
+    Space: O(V + E)
+    graph: adjacency list {u: [(weight, v), ...], ...}
     Returns: (mst_weight, mst_edges)
     """
-    edges.sort()  # Sort by weight
-    uf = UnionFind(n)
+    visited = [False] * n
     mst_weight = 0
     mst_edges = []
     
-    for weight, u, v in edges:
-        if uf.union(u, v):
+    # Min-heap of edges (weight, u, v)
+    pq = [(0, 0, -1)]  # start from node 0, weight=0, parent=-1
+    
+    while pq and len(mst_edges) < n - 1:
+        weight, u, parent = heapq.heappop(pq)
+        if visited[u]:
+            continue
+        visited[u] = True
+        if parent != -1:  # skip the initial dummy edge
             mst_weight += weight
-            mst_edges.append((u, v, weight))
-            if len(mst_edges) == n - 1:
-                break
+            mst_edges.append((parent, u, weight))
+        
+        for w, v in graph[u]:
+            if not visited[v]:
+                heapq.heappush(pq, (w, v, u))
     
     return mst_weight, mst_edges
+```
+### C++
+```cpp
+vector<int> prim(const vector<vector<pii>>& g) {
+	int n = g.size();
+	vector<int> key(n, INF); // Key values used to pick minimum weight edge
+	vector<bool> vis(n, false); // To track vertices included in MST
+	vector<int> parent(n, -1); // MST
+	priority_queue<pii, vector<pii>, greater<pii>> pq; // Min-heap
+	key[0] = 0;
+	pq.push({0, 0}); // {key, vertex}
+	
+	while (!pq.empty()) {
+		int u = pq.top().se;
+		pq.pop();
+		if (vis[u]) continue;
+		vis[u] = true;
+		
+		for (auto& edge : g[u]) {
+			int v = edge.fi;
+			int w = edge.se;
+			
+			if (!vis[v] && w < key[v]) {
+				 key[v] = w;
+				 parent[v] = u;
+				 pq.push({key[v], v});
+			}
+		}
+	}
+	return parent; // Return MST as parent array
+}
 
-def kruskal_maximum(edges, n):
-    """
-    Kruskal's for Maximum Spanning Tree
-    Time: O(E log E)
-    Space: O(V)
-    """
-    edges.sort(reverse=True)  # Sort by weight descending
-    uf = UnionFind(n)
-    mst_weight = 0
-    mst_edges = []
-    
-    for weight, u, v in edges:
-        if uf.union(u, v):
-            mst_weight += weight
-            mst_edges.append((u, v, weight))
-            if len(mst_edges) == n - 1:
-                break
-    
-    return mst_weight, mst_edges
+// Print MST edges 
+for (int i = 1; i < n; i++) cout << mst[i] + 1 << " " << i + 1 << "\n";
+
+// Get total weight
+ll total_weight = 0;
+for (int i = 1; i < n; i++) {
+	for (auto& edge : g[mst[i]]) { 
+		if (edge.fi == i) {
+			 total_weight += edge.se; break; 
+		}
+	} 
+}
 ```
 <div class="page-break" style="page-break-before: always;"></div>
 

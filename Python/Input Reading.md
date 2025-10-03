@@ -41,4 +41,12 @@ print(" ".join(map(str, arr)))  # join list of ints
 import sys
 for line in sys.stdin:
     arr = list(map(int, line.split()))
+
+# OR
+
+while True:
+	try:
+		line = input()
+	except:
+		break
 ```

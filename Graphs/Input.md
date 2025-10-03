@@ -17,6 +17,29 @@ for i in range(1, n+1):
     k, neighbors = data[0], data[1:]
     adj[i] = neighbors
 ```
+
+```cpp
+// undirected & unweighted
+vector<vector<int>> adj(N+1, vector<int>);
+// N+1 because most graph problem number nodes from 1..N, so 0 goes unused
+
+for (int i = 0; i < N; i++) {
+	int a, b;
+	cin >> a >> b;
+	
+	adj[a].push_back(b);
+	adj[b].push_back(a);
+}
+
+// directed & weighted
+vector<vector<pair<int, int>>> adj(N+1, vector<pair<int, int>>);
+for (int i = 0; i < N; i++) {
+	int a, b, w;
+	cin >> a >> b >> w;
+	
+	adj[a].push_back({b, w});
+}
+```
 # Adjacency matrix
 ```python
 n = int(input())
@@ -92,4 +115,14 @@ def adjmat_to_adjlist(mat, directed=False):
             if mat[u][v]:
                 adj[u].append(v)
     return adj
+```
+
+Convert from adjacency list to adjacency matrix in C++:
+```cpp
+// implies you already have an adjacency list as defined above
+vector<vector<int>> adj_matrix(N+1, vector<int>(N+1, 0));
+
+for (int i = 0; i <= N; i++) {
+	for (auto j : adj[i]) adj_matrix[i][j] = 1; // or the weight of the edge
+}
 ```
