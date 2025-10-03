@@ -96,9 +96,9 @@ def adjmat_to_edge(mat, directed=False):
 ```python
 def adjlist_to_adjmat(adj, directed=False):
     """Convert adjacency list -> adjacency matrix"""
-    n = len(adj) - 1
-    mat = [[0]* (n+1) for _ in range(n+1)]
-    for u in range(1, n+1):
+    n = len(adj)
+    mat = [[0] * n for _ in range(n)]
+    for u in range(1, n):
         for v in adj[u]:
             mat[u][v] = 1
             if not directed:
@@ -108,10 +108,10 @@ def adjlist_to_adjmat(adj, directed=False):
 
 def adjmat_to_adjlist(mat, directed=False):
     """Convert adjacency matrix -> adjacency list"""
-    n = len(mat) - 1
-    adj = [[] for _ in range(n+1)]
-    for u in range(1, n+1):
-        for v in range(1, n+1):
+    n = len(mat)
+    adj = [[] for _ in range(n)]
+    for u in range(1, n):
+        for v in range(1, n):
             if mat[u][v]:
                 adj[u].append(v)
     return adj

@@ -13,7 +13,7 @@ Passes through each node once.
 **Complexity:**
 - Time: O(n² × 2ⁿ)
 - Space: O(n × 2ⁿ)
-**Key insight:** Use bitmask to represent visited nodes, dp[mask][i] = can reach node i visiting exactly nodes in mask
+**Key insight:** Use bitmask to represent visited nodes, dp\[mask\] = can reach node i visiting exactly nodes in mask
 ```python
 def hamiltonian_path_dp(graph, n):
     """
@@ -126,4 +126,165 @@ def hamiltonian_path_fixed_endpoints(graph, n, start, end):
     if backtrack(start, 1):
         return True, path
     return False, []
+```
+
+
+# Traveling Salesman Problem (Brute-force)
+
+```python
+def solve_tsp_brute_force(graph):
+    """
+    Solves the Traveling Salesman Problem using a brute-force approach.
+
+    Args:
+        graph (list of lists): A 2D list representing the distance matrix
+                               where graph[i][j] is the distance from
+                               city i to city j.
+
+    Returns:
+        tuple: A tuple containing:
+            - list: The optimal path (tour) as a list of city indices.
+            - float: The total distance of the optimal path.
+    """
+    num_cities = len(graph)
+    if num_cities == 0:
+        return [], 0
+
+    # Start and end the tour at the first city (index 0)
+    start_city = 0
+    other_cities = list(range(1, num_cities))
+
+    # Initialize variables to store the best path found so far
+    min_distance = sys.maxsize # Represents infinity
+    best_path = None
+
+    # Generate all possible permutations of the other cities
+    for path_permutation in itertools.permutations(other_cities):
+        current_distance = 0
+        
+        # 1. Calculate distance from the start city to the first city in the permutation
+        last_city = start_city
+        first_city_in_path = path_permutation[0]
+        current_distance += graph[last_city][first_city_in_path]
+        last_city = first_city_in_path
+
+        # 2. Calculate the distance through the permutation of cities
+        for i in range(len(path_permutation) - 1):
+            from_city = path_permutation[i]
+            to_city = path_permutation[i+1]
+            current_distance += graph[from_city][to_city]
+            last_city = to_city
+        
+        # 3. Calculate distance from the last city back to the start
+        current_distance += graph[last_city][start_city]
+
+        # 4. Check if this path is the new shortest path
+        if current_distance < min_distance:
+            min_distance = current_distance
+            # Construct the full path including the start/end city
+            best_path = [start_city] + list(path_permutation) + [start_city]
+
+    # Handle the trivial case of a single city
+    if best_path is None and num_cities > 0:
+        best_path = [start_city, start_city]
+        min_distance = 0
+
+    return best_path, min_distance
+```
+
+
+# Traveling Salesman Problem (Held-Karp)
+
+```python
+def solve_tsp_held_karp(graph):
+    """
+    Solves the Traveling Salesman Problem using the Held-Karp algorithm.
+
+    This dynamic programming approach finds the optimal tour.
+
+    Args:
+        graph (list of lists): A 2D list representing the distance matrix
+                               where graph[i][j] is the distance from
+                               city i to city j.
+
+    Returns:
+        tuple: A tuple containing:
+            - list: The optimal path (tour) as a list of city indices.
+            - float: The total distance of the optimal path.
+    """
+    n = len(graph)
+    if n <= 1:
+        return [0], 0
+
+    # Memoization table to store costs of subpaths.
+    # Key: (frozenset_of_visited_cities, last_city_in_path)
+    # Value: cost of this subpath
+    memo = {}
+
+    # Path reconstruction table
+    # Key: (frozenset_of_visited_cities, last_city_in_path)
+    # Value: the second-to-last city in the path (predecessor)
+    path_memo = {}
+
+    # --- Step 1: Initialize base cases ---
+    # Cost to travel from the start city (0) to any other city `k`.
+    # This is the base case for paths of length 1.
+    for k in range(1, n):
+        # The set of visited cities only contains {k}, starting from 0.
+        subset = frozenset([k])
+        memo[(subset, k)] = graph[0][k]
+
+    # --- Step 2: Iteratively build up solutions for larger subpaths ---
+    # Iterate through subset sizes, from 2 up to n-1
+    for subset_size in range(2, n):
+        # Generate all subsets of this size that don't include the start city (0)
+        for subset_tuple in itertools.combinations(range(1, n), subset_size):
+            subset = frozenset(subset_tuple)
+            for k in subset:
+                # Find the minimum cost to reach city `k` through the current `subset`.
+                # The path must come from a city `m` in the rest of the subset.
+                prev_subset = subset - {k}
+                min_cost = float('inf')
+                best_predecessor = -1
+
+                for m in prev_subset:
+                    cost = memo[(prev_subset, m)] + graph[m][k]
+                    if cost < min_cost:
+                        min_cost = cost
+                        best_predecessor = m
+
+                memo[(subset, k)] = min_cost
+                path_memo[(subset, k)] = best_predecessor
+
+    # --- Step 3: Calculate the final tour cost ---
+    # The final path must visit all cities {1, 2, ..., n-1} and then return to 0.
+    full_set = frozenset(range(1, n))
+    min_tour_cost = float('inf')
+    last_city_in_tour = -1
+
+    for k in range(1, n):
+        # Cost of visiting all cities and ending at `k`, plus the cost to return to 0
+        tour_cost = memo[(full_set, k)] + graph[k][0]
+        if tour_cost < min_tour_cost:
+            min_tour_cost = tour_cost
+            last_city_in_tour = k
+
+    # --- Step 4: Reconstruct the optimal path ---
+    if last_city_in_tour == -1: # Handles case for n=2
+      if n==2: return [0, 1, 0], graph[0][1] + graph[1][0]
+      return [], float('inf')
+
+    optimal_path = [0]
+    current_set = full_set
+    current_last_city = last_city_in_tour
+
+    while current_set:
+        optimal_path.insert(1, current_last_city)
+        predecessor = path_memo[(current_set, current_last_city)]
+        current_set = current_set - {current_last_city}
+        current_last_city = predecessor
+        
+    optimal_path.append(0) # Complete the cycle
+
+    return optimal_path, min_tour_cost
 ```
