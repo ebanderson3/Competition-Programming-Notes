@@ -9,15 +9,15 @@
 - ~~Python combinatorics notes~~
 - ~~Set theory cheat sheet (math)~~
 - ~~Reading in graph input (all the different types)~~
-- Simple BFS in python for implicit graphs
+- ~~Simple BFS in python for implicit graphs~~
 - ~~Templates for reading in common input patterns~~
 - ~~Pick's theorem~~
 - ~~Root finding algorithms (bisection, Newton's method)~~
-- Optimization algorithms (golden section search, gradient descent)
+- Optimization algorithms (~~golden section search~~, gradient descent)
 - Solving systems of linear equations
 - Advance string search algorithms
-- Chinese remainder theorem
-- Integration algorithms (Simpson's rule)
+- ~~Chinese remainder theorem~~
+- ~~Integration algorithms (Simpson's rule)~~
 - ~~Line intersection tests~~
 - AABB intersection tests
 - Signed distance field formulas for common shapes
@@ -41,5 +41,5 @@
 	- Determining concavity or convexity
 	-  Minimum enclosing circle
 	- Which side of a line a point is on
-- Miller–Rabin primality test
+- ~~Miller–Rabin primality test~~
 - Multiplicative inverse
