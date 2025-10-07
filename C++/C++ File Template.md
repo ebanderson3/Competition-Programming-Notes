@@ -1,5 +1,5 @@
 
-# Template
+## Template
 ```cpp
 #pragma GCC optimize("O3")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
@@ -17,7 +17,7 @@ int main() {
 	// return 0 can be omitted in C++
 }
 ```
-# Compile
+## Compile
 ```sh
 g++ -g -O2 -o test -std=gnu++23 <file>.cpp
 ```

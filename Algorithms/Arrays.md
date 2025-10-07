@@ -1,14 +1,16 @@
 #algorithms #cpp
-# Max Subarray #array
-## Kadane's Algorithm #dp #dynamic_programming
+## Max Subarray (Kadane's Algorithm)
+#array #dp #dynamic_programming 
+
 ```cpp
 for (int k = 0; k < n; k++) {
 	sum = max(array[k],sum+array[k]);
 	best = max(best,sum);
 }
 ```
-# Max submatrix #matrix
-## Using Kadane's algorithm
+## Max Submatrix (2D Kadane's Algorithm)
+#matrix
+
 ```cpp
 for (int i = 0; i < cols; i++) {
      vector<int> prefix(rows, 0);

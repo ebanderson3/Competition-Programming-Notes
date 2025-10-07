@@ -1,9 +1,9 @@
-# Fast Input
+## Fast Input
 ```python
 import sys
 input = sys.stdin.readline
 ```
-# Fast Output
+## Fast Output
 ```python
 import sys
 sys.stdout.write(str(x) + "\n")
@@ -14,7 +14,7 @@ n = int(input())              # single integer
 a, b = map(int, input().split())   # multiple integers
 arr = list(map(int, input().split()))  # list of integers
 ```
-# Reading multiple lines
+## Reading multiple lines
 ```python
 # n lines, one integer each
 n = int(input())
@@ -24,19 +24,19 @@ arr = [int(input()) for _ in range(n)]
 n = int(input())
 matrix = [list(map(int, input().split())) for _ in range(n)]
 ```
-# Strings
+## Strings
 ```python
 s = input().strip()         # remove trailing newline/space
 chars = list(s)             # convert string to list of characters
 ```
-# Output
+## Output
 ```python
 print(x)                    # normal print
 print(x, y)                 # space-separated
 print(*arr)                 # unpack list with spaces
 print(" ".join(map(str, arr)))  # join list of ints
 ```
-# Reading Until EOF
+## Reading Until EOF
 ```python
 import sys
 for line in sys.stdin:

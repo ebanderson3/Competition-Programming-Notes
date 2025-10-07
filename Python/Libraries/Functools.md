@@ -2,7 +2,7 @@
 import functools
 ```
 
-# Memoization / Caching
+## Memoization / Caching
 ```python
 # Fast DP / recursion with memoization
 @functools.lru_cache(maxsize=None)   # unlimited cache
@@ -13,7 +13,7 @@ def fib(n):
 # Clear cache if needed
 fib.cache_clear()
 ```
-# Reduce (folding a sequence)
+## Reduce (folding a sequence)
 ```python
 from operator import add, mul
 
@@ -26,7 +26,7 @@ functools.reduce(mul, arr)   # 24 (product)
 functools.reduce(add, arr, 100)   # 110
 ```
 
-# Comparators
+## Comparators
 ```python
 # Turn old-style cmp into key for sorting
 def cmp(a, b): return a - b
@@ -34,7 +34,7 @@ arr = [3, 1, 2]
 sorted_arr = sorted(arr, key=functools.cmp_to_key(cmp))
 # [1, 2, 3]
 ```
-# Cached Property (Python 3.8+)
+## Cached Property (Python 3.8+)
 ```python
 class Circle:
     def __init__(self, r): self.r = r
@@ -48,7 +48,7 @@ c = Circle(5)
 print(c.area)  # calculates
 print(c.area)  # cached
 ```
-# Function Utilities
+## Function Utilities
 ```python
 # Attach metadata to functions
 @functools.wraps(func)
@@ -60,7 +60,7 @@ from operator import mul
 double = functools.partial(mul, 2)
 double(10)   # 20
 ```
-# Total Ordering
+## Total Ordering
 ```python
 # Auto-generate rich comparison methods
 @functools.total_ordering

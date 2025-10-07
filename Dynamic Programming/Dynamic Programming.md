@@ -1,4 +1,4 @@
-# Fibonacci
+## Fibonacci
 ```python
 def fib(n):
     dp = [0, 1] + [0] * (n-1)
@@ -6,7 +6,7 @@ def fib(n):
         dp[i] = dp[i-1] + dp[i-2]
     return dp[n]
 ```
-# 0/1 Knapsack
+## 0/1 Knapsack
 ```python
 def knapsack(weights, values, W):
     n = len(weights)
@@ -16,7 +16,7 @@ def knapsack(weights, values, W):
             dp[w] = max(dp[w], dp[w-weights[i]] + values[i])
     return dp[W]
 ```
-# Unbounded Knapsack (Coin Change)
+## Unbounded Knapsack (Coin Change)
 ```python
 def coin_change(coins, amount):
     dp = [float('inf')] * (amount+1)
@@ -26,7 +26,7 @@ def coin_change(coins, amount):
             dp[x] = min(dp[x], dp[x-coin] + 1)
     return dp[amount] if dp[amount] != float('inf') else -1
 ```
-# Longest Increasing Subsequence (O(n log n))
+## Longest Increasing Subsequence (O(n log n))
 ```python
 import bisect
 
@@ -40,7 +40,7 @@ def LIS(arr):
             sub[i] = x
     return len(sub)
 ```
-# Longest Common Subsequence (LCS)
+## Longest Common Subsequence (LCS)
 ```python
 def LCS(a, b):
     n, m = len(a), len(b)
@@ -53,7 +53,7 @@ def LCS(a, b):
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     return dp[n][m]
 ```
-# Edit Distance (Levenshtein)
+## Edit Distance (Levenshtein)
 ```python
 def edit_distance(a, b):
     n, m = len(a), len(b)
@@ -70,7 +70,7 @@ def edit_distance(a, b):
                 dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
     return dp[n][m]
 ```
-# Matrix Chain Multiplication
+## Matrix Chain Multiplication
 ```python
 def matrix_chain(dims):
     n = len(dims) - 1
@@ -83,7 +83,7 @@ def matrix_chain(dims):
                 dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + dims[i]*dims[k+1]*dims[j+1])
     return dp[0][n-1]
 ```
-# Partition Equal Subset Sum
+## Partition Equal Subset Sum
 ```python
 def can_partition(nums):
     s = sum(nums)
@@ -96,7 +96,7 @@ def can_partition(nums):
             dp[t] = dp[t] or dp[t-num]
     return dp[target]
 ```
-# Grid DP (Unique Paths)
+## Grid DP (Unique Paths)
 ```python
 def unique_paths(m, n):
     dp = [[1]*n for _ in range(m)]
@@ -105,7 +105,7 @@ def unique_paths(m, n):
             dp[i][j] = dp[i-1][j] + dp[i][j-1]
     return dp[m-1][n-1]
 ```
-# Subset Sum
+## Subset Sum
 ```python
 def subset_sum(nums, target):
     dp = [False]*(target+1)

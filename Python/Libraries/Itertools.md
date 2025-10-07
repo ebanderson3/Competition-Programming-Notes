@@ -1,13 +1,13 @@
 ```python
 import itertools
 ```
-# Infinite counters
+## Infinite counters
 ```python
 itertools.count(start=0, step=1)  # 0, 1, 2, ...
 itertools.cycle([1, 2, 3])        # 1, 2, 3, 1, 2, ...
 itertools.repeat(10, times=5)     # 10, 10, 10, 10, 10
 ```
-# Combinatorics
+## Combinatorics
 ```python
 arr = [1, 2, 3]
 
@@ -23,7 +23,7 @@ itertools.combinations_with_replacement(arr, 2)
 itertools.product(arr, repeat=2)
 # (1,1), (1,2), (1,3), (2,1), ..., (3,3)
 ```
-# Accumulation & Reduction
+## Accumulation & Reduction
 ```python
 list(itertools.accumulate([1, 2, 3, 4]))
 # [1, 3, 6, 10]
@@ -36,7 +36,7 @@ list(itertools.pairwise("abcd"))
 # [('a','b'), ('b','c'), ('c','d')]  (Python 3.10+)
 
 ```
-# Combining Iterables
+## Combining Iterables
 ```python
 list(itertools.chain([1, 2], [3, 4]))
 # [1, 2, 3, 4]
@@ -47,7 +47,7 @@ list(itertools.chain.from_iterable([[1, 2], [3, 4]]))
 list(itertools.zip_longest("AB", "1234", fillvalue='-'))
 # [('A','1'), ('B','2'), ('-','3'), ('-','4')]
 ```
-# Filtering
+## Filtering
 ```python
 list(itertools.compress("abcdef", [1,0,1,0,1,0]))
 # ['a','c','e']
@@ -61,12 +61,12 @@ list(itertools.takewhile(lambda x: x<5, [1,2,6,3]))
 list(itertools.dropwhile(lambda x: x<5, [1,2,6,3]))
 # [6, 3]
 ```
-# Grouping
+## Grouping
 ```python
 [(k, list(g)) for k,g in itertools.groupby("aaabbcaaa")]
 # [('a',['a','a','a']), ('b',['b','b']), ('c',['c']), ('a',['a','a','a'])]
 ```
-# Special Utilities
+## Special Utilities
 ```python
 list(itertools.islice(range(10), 2, 8, 2))
 # [2, 4, 6]   (like slicing but works on iterators)

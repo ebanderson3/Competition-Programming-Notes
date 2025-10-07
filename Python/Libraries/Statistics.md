@@ -1,7 +1,7 @@
 ```python
 import statistics
 ```
-# Basic stats
+## Basic stats
 ```python
 statistics.mean([1,2,3])     # 2
 statistics.median([1,3,2])   # 2

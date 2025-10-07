@@ -1,6 +1,6 @@
  #union_find
 
-# C++ Implementation
+## C++ Implementation
 Modular class
 
 ```cpp

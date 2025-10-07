@@ -1,9 +1,9 @@
 #cpp #strings #lexicographic
-# Compare two strings lexicographically
+## Compare two strings lexicographically
 ```c++
 strcmp(s1.c_str(), s2.c_str()); // returns 0 if equal, >0 if s1 > s2, <0 if s1 < s2 lexicographically
 ```
-# Prefix function (KMP preprocessing)
+## Prefix function (KMP preprocessing)
 - Finds longest prefix-suffix overlaps (used in KMP search, periodicity).
 ```python
 def prefix_function(s):
@@ -18,7 +18,7 @@ def prefix_function(s):
         pi[i] = j
     return pi
 ```
-# Knuth–Morris–Pratt (KMP) Search
+## Knuth–Morris–Pratt (KMP) Search
 ```python
 def kmp_search(text, pattern):
     pi = prefix_function(pattern)
@@ -33,7 +33,7 @@ def kmp_search(text, pattern):
             j = pi[j-1]
     return res
 ```
-# Z-function
+## Z-function
 - Fast substring matching, string comparison.
 ```python
 def z_function(s):
@@ -49,7 +49,7 @@ def z_function(s):
             l, r = i, i+z[i]-1
     return z
 ```
-# Rabin–Karp (Rolling Hash)
+## Rabin–Karp (Rolling Hash)
 ```python
 def rabin_karp(text, pattern, base=257, mod=10**9+7):
     n, m = len(text), len(pattern)
@@ -67,7 +67,7 @@ def rabin_karp(text, pattern, base=257, mod=10**9+7):
             res.append(i-m+1)
     return res
 ```
-# Manacher’s Algorithm (Longest Palindrome in O(n))
+## Manacher’s Algorithm (Longest Palindrome in O(n))
 ```python
 def manacher(s):
     s = "#" + "#".join(s) + "#"
@@ -84,7 +84,7 @@ def manacher(s):
             c, r = i, i+p[i]
     return max(p)  # longest palindrome length
 ```
-# Longest Common Subsequence (LCS)
+## Longest Common Subsequence (LCS)
 ```python
 def LCS(a, b):
     n, m = len(a), len(b)

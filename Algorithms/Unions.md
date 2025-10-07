@@ -1,4 +1,4 @@
-# Union-Find (Disjoin Set Unions)
+## Union-Find (Disjoin Set Unions)
 ```python
 class DSU:
     def __init__(self, n):

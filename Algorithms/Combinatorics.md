@@ -1,6 +1,6 @@
 #cpp #combinatorics 
 
-# Generate all permutations #permuatation
+## Generate all permutations #permuatation
 - make sure container is sorted first
 ```cpp
 do {
@@ -8,7 +8,7 @@ do {
 while (next_permutation(v.begin(), v.end()));
 ```
 
-# Generate all combinations #combination
+## Generate all combinations #combination
 - returns all combinations of size `k`
 ```cpp
 void backtrack(const std::vector<int>& arr, std::vector<int>& combination, int start, int k) {

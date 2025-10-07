@@ -6,7 +6,8 @@ See [[C++ Basic Data Structures]] instead
 - Lists support `.pop()` which removes and returns last element in O(1)
 - `del container[i]` or `.remove(x)` removes by index or value
 - `not container` is the Pythonic way to check if empty
-## Hash table (unordered_map/map equivalent) #map #unordered_map #hash
+## Hash table (unordered_map/map equivalent)
+#map #unordered_map #hash
 ```python
 d = {}                     # dict, O(1) average for insert/lookup
 d[key] = value             # insert
@@ -18,7 +19,8 @@ d.keys()                   # set-like iterable of keys
 d.values()                 # iterable of values
 # The elements in a dict are ordered by insertion order
 ```
-## Resizable array (vector equivalent) #vector #array
+## Resizable array (vector equivalent)
+#vector #array
 ```python
 lst = []                   
 lst[i]                     # get ith element
@@ -26,7 +28,8 @@ lst.append(x)              # push_back
 lst.pop()                  # pop_back, returns last element
 lst.remove(x)              # removes first occurrence of x
 ```
-## Set (unique, unordered, hash-based by default) #set
+## Set (unique, unordered, hash-based by default)
+#set
 ```python
 s = set()                  
 s.add(x)                   # insert
@@ -39,7 +42,8 @@ set().union(*iterable)     # Union all sets from iterable
 # use "sorted(s)" if you need ordering
 # Note that sorted() re-sorts on every call, use sparingly
 ```
-## Multiset (C++ multiset equivalent) #multiset #set
+## Multiset (C++ multiset equivalent)
+#multiset #set
 ```python
 from collections import Counter
 ms = Counter()             
@@ -67,7 +71,8 @@ stack.append(x)            # push
 stack[-1]                  # top
 stack.pop()                # pop returns top element
 ```
-## Queue (FIFO) #queue #deque
+## Queue (FIFO)
+#queue #deque
 ```python
 from collections import deque
 q = deque()
@@ -75,7 +80,8 @@ q.append(x)                # push (to back)
 q.popleft()                # pop from front
 q[0]                       # front
 ```
-## Deque (double-ended queue) #deque
+## Deque (double-ended queue)
+#deque
 ```python
 dq = deque()
 dq.append(x)               # push_back
@@ -83,7 +89,8 @@ dq.appendleft(x)           # push_front
 dq.pop()                   # pop_back
 dq.popleft()               # pop_front
 ```
-## Priority queue (heap) #heap #priority_queue
+## Priority queue (heap)
+#heap #priority_queue
 ```python
 import heapq
 pq = []                    # by default, min-heap
