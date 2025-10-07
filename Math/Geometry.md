@@ -46,7 +46,9 @@ def closest_point_on_line(a: complex, b: complex, p: complex) -> complex:
 	t /= abs(v) * abs(v)
 	
 	return a + v * t
+```
 
+```python
 def closest_point_on_line_segment(a: complex, b: complex, p: complex) -> complex:
 	v = b - a
 	k = p - a
@@ -57,7 +59,9 @@ def closest_point_on_line_segment(a: complex, b: complex, p: complex) -> complex
 	t = min(1, max(0, t))
 	
 	return a + v * t
+```
 
+```python
 def distance_to_line_segment(a: complex, b: complex, p: complex) -> float:
 	v = b - a
 	k = p - a

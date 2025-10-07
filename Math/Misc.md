@@ -16,3 +16,19 @@ for (int i = 0; i < rowsA; ++i) {
 return result;
 ```
 
+## Binary Exponentiation
+
+```python
+def binary_pow(base, power):
+	result = 1
+	two_power = base
+	
+	while power != 0:
+		if power % 2 == 1:
+			result *= two_power
+		
+		two_power *= two_power
+		power >>= 1
+	
+	return result
+```
