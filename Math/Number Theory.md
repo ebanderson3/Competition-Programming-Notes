@@ -11,4 +11,9 @@ for (int p = 2; p * p <= n; p++) {
 
 // prime[i] = if i is prime or not
 ```
+
+## Number of multiples of k in range
+Number of multiples of `k` in `[a..b]`
+```python
+num = b // k - (a - 1) // k
 ```
