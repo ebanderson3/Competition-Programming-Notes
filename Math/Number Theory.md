@@ -1,4 +1,4 @@
-## Number of multiples of k in range
+## Multiples in a Range
 Number of multiples of `k` in `[a..b]`
 ```python
 num = b // k - (a - 1) // k
@@ -238,4 +238,42 @@ def linear_sieve(n):
             j += 1
     
     return primes, spf
+```
+
+## Modular Multiplicative Inverse
+**What it does:** Finds the number `x` such that `(n * x) % m == 1`, meaning `x` is the multiplicative inverse of `n` under modulo `m`.
+**Requirements:**
+- `n` and `m` must be integers.
+- An inverse exists **only if** `gcd(n, m) == 1` (i.e., `n` and `m` are coprime).
+- Uses the **Extended Euclidean Algorithm** to compute coefficients satisfying Bézout’s identity.
+**When to use:**
+- Modular division in algorithms (e.g., combinatorics mod prime, modular arithmetic problems).
+- Cryptographic systems such as RSA.
+- Implementing modular inverses for modular linear equations or modular inverses of factorials.
+**Complexity:**
+- Time: `O(log m)`
+- Space: `O(1)`
+**Key insight:** The Extended Euclidean Algorithm not only computes `gcd(a, b)` but also finds integers `x` and `y` such that `a*x + b*y = gcd(a, b)` — when `gcd(a, b) == 1`, `x` is the modular inverse of `a` modulo `b`.
+
+```python
+def mod_inverse(n, m):
+    """
+    Returns the modular multiplicative inverse of n under modulo m.
+    If inverse doesn't exist, returns None.
+    """
+    # Extended Euclidean Algorithm
+    a0, a1 = m, n
+    x0, x1 = 0, 1  # Coefficients for Bézout's identity
+
+    while a1 != 0:
+        q = a0 // a1
+        a0, a1 = a1, a0 - q * a1
+        x0, x1 = x1, x0 - q * x1
+
+    # If gcd != 1, no inverse exists
+    if a0 != 1:
+        return None
+
+    # Normalize result to be in range [0, m)
+    return x0 % m
 ```
