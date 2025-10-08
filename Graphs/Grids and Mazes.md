@@ -1,4 +1,4 @@
-# Difference Arrays 
+## Difference Arrays 
 #maze
 ### 4 directions (N, E, S, W)
 ```cpp
@@ -28,7 +28,7 @@ for (int i = 0; i < NDIRS; i++) {
 }
 ```
 
-# 2D Neighbor Formulas
+## 2D Neighbor Formulas
 
 ### Cardinal Directions
 ```python

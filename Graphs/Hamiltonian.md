@@ -71,7 +71,6 @@ def reconstruct_path(parent, mask, end, n):
     
     return path[::-1]
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Hamiltonian Path with Specific Start and End
 **What it does:** Finds Hamiltonian path from specific start to end node using backtracking
@@ -127,7 +126,6 @@ def hamiltonian_path_fixed_endpoints(graph, n, start, end):
         return True, path
     return False, []
 ```
-
 
 # Traveling Salesman Problem (Brute-force)
 
@@ -191,7 +189,6 @@ def solve_tsp_brute_force(graph):
 
     return best_path, min_distance
 ```
-
 
 # Traveling Salesman Problem (Held-Karp)
 

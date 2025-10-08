@@ -55,7 +55,6 @@ def get_component_nodes(graph, n):
     
     return components
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Strongly Connected Components - Tarjan's Algorithm
 **What it does:** Finds all strongly connected components (SCCs) in a directed graph where every node can reach every other node in the SCC
@@ -120,7 +119,6 @@ def scc_tarjan(graph, n):
     
     return sccs
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Bridge Finding
 **What it does:** Finds all bridges (cut edges) in an undirected graph - edges whose removal disconnects the graph
@@ -176,7 +174,6 @@ def find_bridges(graph, n):
     
     return bridges
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Articulation Point Finding (Cut Vertices)
 **What it does:** Finds all articulation points - vertices whose removal increases the number of connected components

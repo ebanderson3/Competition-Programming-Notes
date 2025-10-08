@@ -46,7 +46,9 @@ def is_bipartite_bfs(graph, n):
                     return False, [], []  # Odd cycle found
     
     return True, partition[0], partition[1]
+```
 
+```python
 def find_odd_cycle(graph, n):
     """
     Find an odd cycle if graph is not bipartite
@@ -100,7 +102,6 @@ def find_odd_cycle(graph, n):
     
     return True, []
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Maximum Bipartite Matching - Hungarian Algorithm
 **What it does:** Finds minimum/maximum cost perfect matching in weighted bipartite graphs
@@ -164,7 +165,9 @@ def hungarian_algorithm(cost_matrix):
     # ... (full implementation involves augmenting paths)
     
     return matching, total_cost
+```
 
+```python
 def kuhn_matching(graph, n_left, n_right):
     """
     Kuhn's Algorithm (Ford-Fulkerson for bipartite matching)
@@ -195,7 +198,7 @@ def kuhn_matching(graph, n_left, n_right):
     
     return matching, match_left, match_right
 ```
-<div class="page-break" style="page-break-before: always;"></div>
+
 # Hopcroft-Karp Algorithm (Fastest Bipartite Matching)
 **What it does:** Finds maximum bipartite matching using simple DFS augmenting paths
 **Requirements:**
@@ -213,7 +216,7 @@ def kuhn_matching(graph, n_left, n_right):
 - Space: O(V)
 **Key insight:** Repeatedly find augmenting paths with DFS; each path increases matching by 1
 ```python
-rom collections import deque
+from collections import deque
 
 def hopcroft_karp(graph, n_left, n_right):
     """
@@ -279,4 +282,3 @@ def hopcroft_karp(graph, n_left, n_right):
     
     return matching, match_left, match_right
 ```
-

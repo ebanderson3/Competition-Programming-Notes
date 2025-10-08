@@ -174,9 +174,45 @@ vector<int> bellmanFord(int n, vector<vector<int>>& edges, int src) {
     return dist;
 }
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
-# All pairs shortest path (Floyd-Warshall)
+# Floyd-Warshall (All-Pairs Shortest Paths in Weighted Graphs)
+**What it does:** Computes the shortest distances between all pairs of vertices in a weighted graph, even with negative edge weights (but no negative cycles).  
+**Requirements:**
+- A weighted graph represented as an adjacency matrix or edge list
+- Vertices indexed from 0 to n-1  
+**When to use:**
+- You need all-pairs shortest paths
+- Graph may have negative edge weights but no negative cycles
+- Useful in route planning, network analysis, or transitive closure computations  
+**Complexity:**
+- Time: O(V³), where V is the number of vertices
+- Space: O(V²)  
+**Key insight:** Incrementally update shortest paths by considering each vertex as an intermediate node.
+
+### Python
+```python
+def floyd_warshall(graph):
+    """
+    Compute all-pairs shortest paths using Floyd-Warshall algorithm.
+    graph: adjacency matrix of size n x n, with float('inf') for no direct edge
+    Returns: distance matrix of size n x n where dist[i][j] is shortest distance from i to j
+    """
+    n = len(graph)
+    # Initialize distance matrix with input graph weights
+    dist = [row[:] for row in graph]  # deep copy to avoid modifying input
+
+    # Core logic: consider each vertex k as an intermediate point
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                # Update distance if going through k is shorter
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+
+    # Return the all-pairs shortest path distances
+    return dist
+```
+### C++
 ```cpp
 for (int i = 1; i <= N; i++) {
 	for (int j = 1; j <= N; j++) {
@@ -193,6 +229,58 @@ for (int k = 1; k <= n; k++) {
 		}
 	}
 }
+```
+
+# Floyd-Warshall with Path Reconstruction (All-Pairs Shortest Paths + Path Retrieval)
+**What it does:** Computes the shortest distances between all pairs of vertices and allows reconstruction of the actual shortest path.  
+**Requirements:**
+- A weighted graph represented as an adjacency matrix or edge list
+- Vertices indexed from 0 to n-1  
+**When to use:**
+- Need both all-pairs shortest distances and the ability to retrieve the paths
+- Graph may have negative edge weights but no negative cycles
+- Useful in route planning, network analysis, or multi-step path queries  
+**Complexity:**
+- Time: O(V³)
+- Space: O(V²)  
+**Key insight:** Maintain a predecessor (next) matrix to track the next vertex on the shortest path, updating it as shorter paths are discovered.
+
+```python
+def floyd_warshall_with_path(graph):
+    """
+    Compute all-pairs shortest paths and reconstruct paths.
+    graph: adjacency matrix of size n x n, float('inf') for no edge
+    Returns: (dist, next_node) where
+        dist[i][j] = shortest distance from i to j
+        next_node[i][j] = next vertex after i on path to j
+    """
+    n = len(graph)
+    dist = [row[:] for row in graph]  # deep copy of graph
+    next_node = [[None if graph[i][j] == float('inf') else j for j in range(n)] for i in range(n)]
+
+    # Core logic: consider each vertex k as an intermediate
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+                    next_node[i][j] = next_node[i][k]  # update path
+
+    return dist, next_node
+
+def reconstruct_path(u, v, next_node):
+    """
+    Reconstruct shortest path from u to v using the next_node matrix
+    Returns: list of vertices on the path, or [] if no path exists
+    """
+    if next_node[u][v] is None:
+        return []  # no path exists
+
+    path = [u]
+    while u != v:
+        u = next_node[u][v]
+        path.append(u)
+    return path
 ```
 
 # 0-1 BFS

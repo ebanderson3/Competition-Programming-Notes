@@ -40,7 +40,9 @@ def build_lca(adj, root=1):
 
     dfs(root, -1)
     return up, depth, LOG
+```
 
+```python
 def lca(u, v, up, depth, LOG):
     if depth[u] < depth[v]:
         u, v = v, u
@@ -59,7 +61,9 @@ def lca(u, v, up, depth, LOG):
             v = up[v][j]
     
     return up[u][0]
+```
 
+```python
 def distance(u, v, up, depth, LOG):
     """Distance between u and v in edges"""
     w = lca(u, v, up, depth, LOG)

@@ -106,7 +106,6 @@ def is_eulerian_undirected(graph, n):
     
     return False, False, -1
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Eulerian Path/Circuit Detection (Directed)
 **What it does:** Determines if a directed graph has an Eulerian path or circuit considering edge directions

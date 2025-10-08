@@ -76,7 +76,9 @@ class UnionFind:
             self.parent[py] = px
             self.rank[px] += 1
         return True
+```
 
+```python
 def kruskal(edges, n):
     """
     Kruskal's algorithm for Minimum Spanning Tree
@@ -98,7 +100,9 @@ def kruskal(edges, n):
                 break
     
     return mst_weight, mst_edges
+```
 
+```python
 def kruskal_maximum(edges, n):
     """
     Kruskal's for Maximum Spanning Tree
@@ -152,7 +156,6 @@ void join(vector<int>& d, int a, int b) {
 	d[a] = b;
 }
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Prim's Algorithm (Vertex-based MST)
 What it does: Builds MST by growing from a starting vertex, always adding minimum weight edge to unvisited vertex
@@ -246,7 +249,6 @@ for (int i = 1; i < n; i++) {
 	} 
 }
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Bottleneck Spanning Tree
 What it does: Finds spanning tree that minimizes the maximum edge weight in the tree
@@ -285,7 +287,9 @@ def bottleneck_spanning_tree(edges, n):
                 break
     
     return max_edge_weight, mst_edges
+```
 
+```python
 def bottleneck_path_query(graph, n, queries):
     """
     Answer bottleneck path queries after building MST
@@ -328,7 +332,6 @@ def bottleneck_path_query(graph, n, queries):
     
     return results
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Spanning Forest (Disconnected Graphs)
 What it does: Finds MST for each connected component in a disconnected graph
@@ -373,7 +376,6 @@ def minimum_spanning_forest(edges, n):
     
     return total_weight, forest_edges, uf.components
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Dynamic MST (Add/Remove Edges)
 **What it does:** Maintains MST while allowing edge additions and deletions

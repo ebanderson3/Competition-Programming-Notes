@@ -96,7 +96,6 @@ def has_cycle_undirected_uf(edges, n):
             return True  # Cycle detected
     return False
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Find All Cycles in Directed Graph
 **What it does:** Finds and returns all cycles in a directed graph using DFS coloring

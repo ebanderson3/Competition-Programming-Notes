@@ -1,4 +1,4 @@
-# Breadth-first Search
+## Breadth-first Search
 ```python
 from collections import deque
 
@@ -14,7 +14,7 @@ def bfs(start):
                 visited.add(v)
                 q.append(v)
 ```
-# Depth-first Search (Recursive)
+## Depth-first Search (Recursive)
 ```python
 def dfs(u, visited):
     visited.add(u)
@@ -23,7 +23,7 @@ def dfs(u, visited):
         if v not in visited:
             dfs(v, visited)
 ```
-# Depth-first Search (Iterative)
+## Depth-first Search (Iterative)
 ```python
 def dfs_iter(start, graph):
     visited = set()

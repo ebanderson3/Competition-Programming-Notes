@@ -74,7 +74,6 @@ class Dinic:
                 flow += f
         return flow
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Minimum Cost Maximum Flow
 **What it does:** Finds maximum flow with minimum total cost where edges have both capacity and cost

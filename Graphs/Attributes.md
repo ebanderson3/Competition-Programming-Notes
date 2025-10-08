@@ -73,7 +73,6 @@ def calculate_degrees(graph, n, directed=False):
             degree[u] = len(graph.get(u, []))
         return degree
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Node Centrality Measures
 **What it does:** Calculates various centrality metrics (betweenness, closeness, degree) to identify important nodes
@@ -142,7 +141,9 @@ def betweenness_centrality(graph, n):
         centrality = [c * scale for c in centrality]
     
     return centrality
+```
 
+```python
 def closeness_centrality(graph, n):
     """
     Calculate closeness centrality (inverse of average distance)
@@ -173,7 +174,9 @@ def closeness_centrality(graph, n):
             centrality.append(0.0)
     
     return centrality
+```
 
+```python
 def degree_centrality(graph, n):
     """
     Simple degree-based centrality
@@ -184,7 +187,6 @@ def degree_centrality(graph, n):
     max_possible = n - 1
     return [d / max_possible if max_possible > 0 else 0 for d in degree]
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Edge Classification and Properties
 **What it does:** Classifies edges as tree/back/forward/cross edges and finds multi-edges/self-loops
@@ -250,7 +252,9 @@ def classify_edges_dfs(graph, n):
             dfs(i)
     
     return edge_types, discovery, finish
+```
 
+```python
 def find_multi_edges(graph, n):
     """
     Find parallel edges and self-loops
@@ -275,7 +279,6 @@ def find_multi_edges(graph, n):
     
     return self_loops, multi_edges
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Node Distance and Eccentricity
 **What it does:** Calculates eccentricity (max distance from node), diameter, radius, and center of graph
@@ -323,7 +326,9 @@ def eccentricity(graph, n):
             ecc.append(max_dist)
     
     return ecc
+```
 
+```python
 def graph_diameter_radius_center(graph, n):
     """
     Calculate diameter, radius, and center of graph
@@ -343,7 +348,9 @@ def graph_diameter_radius_center(graph, n):
     center = [i for i in range(n) if ecc[i] == radius]
     
     return diameter, radius, center
+```
 
+```python
 def distance_distribution(graph, n, source):
     """
     Get distribution of distances from source
@@ -369,7 +376,6 @@ def distance_distribution(graph, n, source):
     
     return dist, distribution
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Clustering and Triangle Counting
 **What it does:** Counts triangles and calculates clustering coefficients measuring local connectivity
@@ -404,7 +410,9 @@ def count_triangles(graph, n):
                         triangles += 1
     
     return triangles
+```
 
+```python
 def clustering_coefficient(graph, n):
     """
     Calculate local and global clustering coefficients
@@ -439,7 +447,9 @@ def clustering_coefficient(graph, n):
     global_clustering = sum(local_clustering) / n if n > 0 else 0
     
     return local_clustering, global_clustering
+```
 
+```python
 def node_triangle_count(graph, n):
     """
     Count triangles each node participates in
@@ -521,7 +531,9 @@ def k_core_decomposition(graph, n):
                                 degree_buckets[degree[u]].add(u)
     
     return core
+```
 
+```python
 def get_k_core(graph, n, k):
     """
     Extract k-core subgraph
@@ -537,7 +549,6 @@ def get_k_core(graph, n, k):
     
     return k_core_nodes, k_core_graph
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Bipartiteness and Coloring Check
 ```python
@@ -575,7 +586,9 @@ def is_bipartite(graph, n):
             partition[color[i]].append(i)
     
     return True, partition
+```
 
+```python
 def chromatic_polynomial_small(graph, n):
     """
     Calculate chromatic polynomial for small graphs
@@ -621,7 +634,6 @@ def chromatic_polynomial_small(graph, n):
     
     return poly_coeffs
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
 # Path and Connectivity Metrics
 **What it does:** Calculates node connectivity between pairs (min nodes to remove to disconnect) and transitive closure
@@ -709,7 +721,9 @@ def node_connectivity(graph, n, s, t):
         max_flow += path_flow
     
     return max_flow
+```
 
+```python
 def all_pairs_connectivity(graph, n):
     """
     Check connectivity between all pairs
