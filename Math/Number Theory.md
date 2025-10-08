@@ -240,6 +240,76 @@ def linear_sieve(n):
     return primes, spf
 ```
 
+## Prime Factorization
+**What it does:** Breaks a given integer `n` into a list of its prime factors, including their multiplicities.  
+**Requirements:**
+- Input integer `n > 1`
+**When to use:**
+- Cryptography and number theory problems
+- Competitive programming problems requiring factorization or divisor counting
+- Finding greatest common divisors (GCD) and least common multiples (LCM) efficiently  
+**Complexity:**
+- Time: O(√n) for trial division
+- Space: O(log n) to store factors  
+**Key insight:** A number `n` must have a prime factor ≤ √n unless it is prime itself.
+
+```python
+def prime_factorization(n):
+    """
+    Returns a list of prime factors of the integer n
+    Example: prime_factorization(60) -> [2, 2, 3, 5]
+    """
+    factors = []
+
+    # Handle factor 2 separately to allow incrementing by 2 later
+    while n % 2 == 0:
+        factors.append(2)
+        n //= 2
+
+    # Check odd factors from 3 up to sqrt(n)
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+        i += 2  # Only test odd numbers
+
+    # If remaining n is prime and greater than 2
+    if n > 2:
+        factors.append(n)
+
+    return factors
+```
+
+## Prime Factorization with Linear Sieve (O(log n) after preprocessing)
+**What it does:** Precomputes the smallest prime factor (SPF) for every number up to `N`, enabling immediate factorization of any number ≤ `N`.  
+**Requirements:**
+- Maximum number `N` to precompute SPF
+- Precomputed smallest prime factor table.
+**When to use:**
+- Multiple factorization queries for numbers ≤ N
+- Competitive programming problems requiring fast repeated factorization
+- Problems requiring divisors, GCDs, or LCMs efficiently  
+**Complexity:**
+- Time: O(N) for sieve preprocessing, O(log n) per factorization query
+- Space: O(N) for storing SPF  
+**Key insight:** Every number n can be factorized by repeatedly dividing by its smallest prime factor, which is precomputed for all numbers up to N.
+
+```python
+# Precompute SPF table using linear_sieve (See Linear Sieve above)
+primes, spf = linear_sieve(N)
+
+def factorize_using_spf(n, spf):
+    """
+    Returns the prime factorization of n using precomputed SPF
+    """
+    factors = []
+    while n > 1:
+        factors.append(spf[n])
+        n //= spf[n]
+    return factors
+```
+
 ## Modular Multiplicative Inverse
 **What it does:** Finds the number `x` such that `(n * x) % m == 1`, meaning `x` is the multiplicative inverse of `n` under modulo `m`.
 **Requirements:**
