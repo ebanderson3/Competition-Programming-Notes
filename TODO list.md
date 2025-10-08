@@ -14,7 +14,7 @@
 - ~~Pick's theorem~~
 - ~~Root finding algorithms (bisection, Newton's method)~~
 - Optimization algorithms (~~golden section search~~, gradient descent)
-- Solving systems of linear equations
+- ~~Solving systems of linear equations~~
 - Advance string search algorithms
 - ~~Chinese remainder theorem~~
 - ~~Integration algorithms (Simpson's rule)~~
@@ -28,11 +28,11 @@
 - Modular arithmetic
 - ~~Graph cycle counting~~
 - ~~Flow graph problems~~
-- Find primes past 4B (Sieve extension)
+- ~~Find primes past 4B (Sieve extension)~~
 - Number Theory
 	- Cryptography
 	- Calculating big numbers
-	- Computing powers
+	- ~~Computing powers~~
 - Bottom-up DP solving
 - Geometry
 	- Find if something is between 2 angles
@@ -42,4 +42,4 @@
 	-  Minimum enclosing circle
 	- Which side of a line a point is on
 - ~~Miller–Rabin primality test~~
-- Multiplicative inverse
+- ~~Multiplicative inverse~~
