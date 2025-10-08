@@ -75,3 +75,10 @@ long long chinese_remainder_theorem(const vector<long long>& remainders, const v
     return solution % product_of_moduli;
 }
 ```
+
+## Fast Fibonacci
+$$
+\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n
+= \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix}
+$$
+Where $F_n$ is the nth term of the Fibonacci sequence. The matrix powers can be quickly calculated using Binary Exponentiation.
