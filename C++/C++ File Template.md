@@ -1,5 +1,6 @@
 
 ## Template
+Only use the `pragmas` when performance is of the utmost concern. They can sometimes cause the program to compile weirdly and produce incorrect results.
 ```cpp
 #pragma GCC optimize("O3")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
@@ -21,9 +22,11 @@ int main() {
 ```sh
 g++ -g -O2 -o test -std=gnu++23 <file>.cpp
 ```
-
 ## Makefile
+Compiles all C++ files in the current directory when running `make`.
 ```Makefile
-$(basename $(wildcard *.cpp)): %: %.cpp
-	g++-15 -g -o $@ -O2 -std=gnu++23 $<
+all: $(basename $(wildcard *.cpp))
+
+%: %.cpp
+	g++ -g -o $@ -O2 -std=gnu++23 $<
 ```
