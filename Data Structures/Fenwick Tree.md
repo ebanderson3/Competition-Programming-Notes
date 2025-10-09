@@ -1,6 +1,5 @@
 #fenwick_tree
-
-## C++ Implementation
+### C++ Implementation
 ```cpp
 class FenwickTree {
 private:

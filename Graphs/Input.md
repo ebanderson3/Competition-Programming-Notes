@@ -45,9 +45,8 @@ for (int i = 0; i < N; i++) {
 n = int(input())
 mat = [list(map(int, input().split())) for _ in range(n)]
 ```
-<div class="page-break" style="page-break-before: always;"></div>
 
-## Edge list $\leftrightarrow$ adjacency list
+## Edge list ↔︎ adjacency list
 ```python
 def edge_to_adjlist(edges, n, directed=False):
     """Convert edge list -> adjacency list"""
@@ -69,7 +68,7 @@ def adjlist_to_edge(adj, directed=False):
     return edges
 ```
 
-## Edge list $\leftrightarrow$ adjacency matrix
+## Edge list ↔︎ adjacency matrix
 ```python
 def edge_to_adjmat(edges, n, directed=False):
     """Convert edge list -> adjacency matrix"""
@@ -92,7 +91,7 @@ def adjmat_to_edge(mat, directed=False):
     return edges
 ```
 
-## Adjacency list $\leftrightarrow$ adjacency matrix
+## Adjacency list ↔︎ adjacency matrix
 ```python
 def adjlist_to_adjmat(adj, directed=False):
     """Convert adjacency list -> adjacency matrix"""
