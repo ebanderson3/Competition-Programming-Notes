@@ -1,15 +1,17 @@
 #cpp #combinatorics 
 
-## Generate all permutations #permuatation
-- make sure container is sorted first
+## Generate all permutations
+#permuatation
+Make sure container is sorted first.
 ```cpp
 do {
 	// process permutation
 while (next_permutation(v.begin(), v.end()));
 ```
 
-## Generate all combinations #combination
-- returns all combinations of size `k`
+## Generate all combinations 
+#combination
+Returns all combinations of size `k`.
 ```cpp
 void backtrack(const std::vector<int>& arr, std::vector<int>& combination, int start, int k) {
 
