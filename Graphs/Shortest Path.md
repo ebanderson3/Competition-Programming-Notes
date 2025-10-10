@@ -60,27 +60,41 @@ def dijkstra(n, src):
 ```
 ### C++
 ```cpp
-vector<int> dist(N+1, INT_MAX);
-dist[1] = 0;
-// alternatively, we can do:
-// priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>
-priority_queue<pair<int, int>> pq;
-pq.push({0,1});
-// prev.assign(n, -1);
-vector<bool> vis(N+1, false);
+void dijkstra(vector<pair<int, int>>& adj, int start) {
+	vector<int> dist(adj.size(), INT_MAX);
+	dist[start] = 0;
+	
+	// alternatively, we can do:
+	// priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>
+	priority_queue<pair<int, int>> pq;
+	pq.push({0, start});
+	
+	// prev.assign(n, -1);
+	vector<bool> vis(adj.size(), false);
 
-while (!pq.empty()) {
-     int a = pq.top().second; pq.pop();
-     if (vis[a]) continue;
-     vis[a] = true;
-     
-     for (auto [w, b] : adj[a]) {
-         if (dist[a] + w < dist[b]) {
-             dist[b] = dist[a] + w;
-// prev[b] = a;
-             pq.push({-dist[b], b});
-         }
-    }
+	while (!pq.empty()) {
+		int a = pq.top().second;
+		pq.pop();
+		
+		if (vis[a]) continue;
+		vis[a] = true;
+		
+		// If you have a destination node.
+		// if (a == end) break;
+		
+		for (auto [b, w] : adj[a]) {
+			if (dist[a] + w < dist[b]) {
+				dist[b] = dist[a] + w;
+				
+				// prev[b] = a;
+				
+				pq.push({-dist[b], b});
+			}
+		}
+	}
+	
+	// Return either dist for all distances or dist[end] for the distance to the end.
+}
 ```
 ### Reconstructing the path
 ```cpp

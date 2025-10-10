@@ -44,47 +44,50 @@ public:
 	int range_sum(int l, int r) {
 		return prefix_sum(r) - prefix_sum(l - 1);
 	}
-	
-	// DO NOT mix the point_query/range_update methods with the
-	//  update/prefix_sum/range_sum methods. They are incompatible.
-	
-	// Retrieves the value of the element at index.
-	// 0 <= index < n
-	int point_query(int index) {
-		return prefix_sum(index) - prefix_sum(index - 1);
-	}
+};
+```
 
-	// Updates all elements in the range [l, r] by delta.
-	// 0 <= l < n, 0 <= r < n
-	void range_update(int l, int r, int delta) {
-		update(l, delta);
-		update(r + 1, -delta);
-	}
+These methods can be added for range-update point-query functionality. These should not be mixed with the default point-update range-query methods.
+```C++
+// Retrieves the value of the element at index.
+// 0 <= index < n
+int point_query(int index) {
+	return prefix_sum(index) - prefix_sum(index - 1);
+}
 
-	// Finds the smallest index 'i' such that prefix_sum(i) >= value.
-	// Returns 0 <= i < n
-	int lower_bound(int value) {
-		int index = 0;
-		int mask = 1;
+// Updates all elements in the range [l, r] by delta.
+// 0 <= l < n, 0 <= r < n
+void range_update(int l, int r, int delta) {
+	update(l, delta);
+	update(r + 1, -delta);
+}
+```
+
+This is a function for finding the lower bound.
+```C++
+// Finds the smallest index 'i' such that prefix_sum(i) >= value.
+// Returns 0 <= i < n
+int lower_bound(int value) {
+	int index = 0;
+	int mask = 1;
+	
+	while (mask <= size) {
+		mask <<= 1;
+	}
+	
+	mask >>= 1;
+	
+	while (mask != 0) {
+		int temp = index + mask;
 		
-		while (mask <= size) {
-			mask <<= 1;
+		if (temp <= size && tree[temp] < value) {
+			value -= tree[temp];
+			index = temp;
 		}
 		
 		mask >>= 1;
-		
-		while (mask != 0) {
-			int temp = index + mask;
-			
-			if (temp <= size && tree[temp] < value) {
-				value -= tree[temp];
-				index = temp;
-			}
-			
-			mask >>= 1;
-		}
-		
-		return index;
 	}
-};
+	
+	return index;
+}
 ```
