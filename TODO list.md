@@ -4,7 +4,7 @@
 	- maybe into a folder
 - Maze solving template
 - ~~More advanced data structures~~
-- Check if fenwick tree works/Make a better fenwick tree
+- ~~Check if fenwick tree works/Make a better fenwick tree~~
 - ~~Find more library algorithms (python especially)~~
 - ~~Python combinatorics notes~~
 - ~~Set theory cheat sheet (math)~~
