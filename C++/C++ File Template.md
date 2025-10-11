@@ -30,3 +30,8 @@ all: $(basename $(wildcard *.cpp))
 %: %.cpp
 	g++ -g -o $@ -O2 -std=gnu++23 $<
 ```
+## Valgrind
+Checks for memory leaks and illegal accesses.
+```sh
+valgrind --leak-check=yes ./<exe>
+```
