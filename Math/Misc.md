@@ -50,7 +50,7 @@ def binary_pow(base, power):
 This can be generalized to compute $k$ applications of any associative function $f$ to an initial value $b$. Examples of associative functions are matrix multiplication and permutation.
 ```python
 def binary_pow(b, k):
-	# I is the multiplicative identity This is 1 for integer mult,
+	# I is the multiplicative identity. This is 1 for integer mult,
 	#  the identity matrix for matrix mult, etc.
 	result = I
 	
