@@ -97,3 +97,117 @@ def LCS(a, b):
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     return dp[n][m]
 ```
+
+## Aho–Corasick Algorithm (Efficient multi-pattern string matching)
+
+**What it does:**  
+Finds all occurrences of multiple patterns within a given text in linear time relative to the text length, after building a finite automaton from the pattern set.
+**Requirements:**
+- A set of string patterns (dictionary)
+- A target text to search through
+- Data structures: trie (for pattern storage), failure links (for transitions on mismatches), and output lists (for matches)
+**When to use:**
+- Searching for multiple keywords simultaneously (e.g., spam filtering, plagiarism detection, DNA sequence analysis, intrusion detection systems).
+- When you need faster matching than running multiple individual substring searches.
+**Complexity:**
+- Time: **O(N + M + Z)** where
+    - _N_ = total length of all patterns,
+    - _M_ = length of the text,
+    - _Z_ = number of matches found.
+- Space: **O(Σ × N)** where Σ is the alphabet size.
+**Key insight:** Build a trie of all patterns and use failure links (similar to KMP) to efficiently transition between patterns upon mismatches without re-checking characters.
+### Constructing the state machine
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+
+struct AhoCorasick {
+    static const int ALPHABET = 26; // assuming lowercase 'a'–'z'
+    struct Node {
+        array<int, ALPHABET> next{};
+        int link = -1;                // failure link
+        vector<int> out;              // pattern indices ending here
+        Node() { next.fill(-1); }
+    };
+
+    vector<Node> trie;
+
+    AhoCorasick() { trie.emplace_back(); }
+
+    void insert(const string &s, int id) {
+        int v = 0;
+        for (char c : s) {
+            int idx = c - 'a';
+            if (trie[v].next[idx] == -1) {
+                trie[v].next[idx] = trie.size();
+                trie.emplace_back();
+            }
+            v = trie[v].next[idx];
+        }
+        trie[v].out.push_back(id);
+    }
+
+    void build() {
+        queue<int> q;
+        trie[0].link = 0;
+
+        for (int c = 0; c < ALPHABET; ++c) {
+            int u = trie[0].next[c];
+            if (u != -1) {
+                trie[u].link = 0;
+                q.push(u);
+            } else {
+                trie[0].next[c] = 0;
+            }
+        }
+
+        while (!q.empty()) {
+            int v = q.front(); q.pop();
+            for (int c = 0; c < ALPHABET; ++c) {
+                int u = trie[v].next[c];
+                if (u != -1) {
+                    trie[u].link = trie[trie[v].link].next[c];
+                    for (int pat : trie[trie[u].link].out)
+                        trie[u].out.push_back(pat);
+                    q.push(u);
+                } else {
+                    trie[v].next[c] = trie[trie[v].link].next[c];
+                }
+            }
+        }
+    }
+};
+```
+### Using the state machine
+```C++
+// Use the state machine to find the substrings in a string
+vector<pair<int,int>> search(AhoCorasick &ac, const string &text) {
+    vector<pair<int,int>> matches; // (position, pattern_id)
+    int v = 0;
+
+    for (int i = 0; i < (int)text.size(); ++i) {
+        int c = text[i] - 'a';
+        v = ac.trie[v].next[c];
+
+        for (int pat_id : ac.trie[v].out)
+            matches.emplace_back(i, pat_id);
+    }
+
+    return matches;
+}
+
+// Example usage
+int main() {
+    AhoCorasick ac;
+    vector<string> patterns = {"he", "she", "his", "hers"};
+    for (int i = 0; i < (int)patterns.size(); ++i)
+        ac.insert(patterns[i], i);
+    ac.build();
+
+    string text = "ahishers";
+    auto matches = search(ac, text);
+
+    for (auto [pos, id] : matches)
+        cout << "Pattern \"" << patterns[id] << "\" found ending at index " << pos << "\n";
+}
+```
