@@ -30,7 +30,7 @@ def polygon_area(vertexes) -> float:
 ```
 
 ## Pick's Theorem
-$A$ is the area of the polygon, $i$ is the number of points inside the polygon, and $b$ is the number of points on the boundary of the polygon.
+$A$ is the area of the polygon, $i$ is the number of points inside the polygon, and $b$ is the number of points on the boundary of the polygon (the vertexes).
 $$A = i + \frac{b}{2} - 1$$
 $$i = A - \frac{b}{2} + 1$$
 
@@ -72,4 +72,62 @@ def distance_to_line_segment(a: complex, b: complex, p: complex) -> float:
 	t = min(1, max(0, t))
 
 	return abs(a + v * t - p)
+```
+
+## Point-in-Polygon Test
+Checks if a given point is inside the polygon.
+
+```python
+def point_in_polygon(polygon: list[complex], point: complex) -> bool:
+    inside = False
+    n = len(polygon)
+    x, y = point.real, point.imag
+
+    for i in range(n):
+        a = polygon[i]
+        b = polygon[(i + 1) % n]
+        ax, ay = a.real, a.imag
+        bx, by = b.real, b.imag
+
+        # Check if point is between y-coordinates of the edge
+        if ((ay > y) != (by > y)) and (x < (bx - ax) * (y - ay) / (by - ay) + ax):
+            inside = not inside
+
+    return inside
+```
+
+## Polygon Distance Field
+Signed and unsigned distance field for a polygon. A distance field represents the distance to closest point on a shape. A signed distance field is negative on the inside and positive on the outside.
+
+```python
+def distance_to_polygon(polygon: list[complex], point: complex) -> float:
+    min_dist = math.inf
+    n = len(polygon)
+    
+    for i in range(n):
+        a = polygon[i]
+        b = polygon[(i + 1) % n]
+        
+        dist = distance_to_line_segment(a, b, point)
+        min_dist = min(min_dist, dist)
+    
+    return min_dist
+```
+
+```python
+def signed_distance_to_polygon(polygon: list[complex], point: complex) -> float:
+    min_dist = math.inf
+    n = len(polygon)
+    
+    for i in range(n):
+        a = polygon[i]
+        b = polygon[(i + 1) % n]
+        
+        dist = distance_to_line_segment(a, b, point)
+        min_dist = min(min_dist, dist)
+    
+    if point_in_polygon(polygon, point):
+        return -min_dist
+    
+    return min_dist
 ```
