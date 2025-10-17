@@ -70,3 +70,73 @@ def distance(u, v, up, depth, LOG):
     
     return depth[u] + depth[v] - 2*depth[w]
 ```
+### Additional path attributes
+LCA can be modified to allow evaluating any associative function $f$ on the costs of path.
+
+Example with `max`:
+```python
+import sys
+sys.setrecursionlimit(10**7)
+
+def build_lca_with_max(adj, root=1):
+    """
+    adj[u] = list of (v, w) pairs where w is edge weight
+    """
+    n = len(adj) - 1
+    LOG = n.bit_length()
+    
+    depth = [0] * (n + 1)
+    up = [[-1] * (LOG + 1) for _ in range(n + 1)]
+    max_up = [[0] * (LOG + 1) for _ in range(n + 1)]  # maximum edge weight to ancestor
+
+    def dfs(u, p):
+        for v, w in adj[u]:
+            if v == p:
+                continue
+            depth[v] = depth[u] + 1
+            up[v][0] = u
+            max_up[v][0] = w
+            # compute higher ancestors
+            for j in range(1, LOG + 1):
+                if up[v][j - 1] != -1:
+                    up[v][j] = up[up[v][j - 1]][j - 1]
+                    max_up[v][j] = max(max_up[v][j - 1], max_up[up[v][j - 1]][j - 1])
+            dfs(v, u)
+
+    dfs(root, -1)
+    return up, max_up, depth, LOG
+
+```
+
+```python
+def max_edge_on_path(u, v, up, max_up, depth, LOG):
+    """
+    Returns maximum edge weight on path between u and v
+    """
+    if depth[u] < depth[v]:
+        u, v = v, u
+    
+    max_edge = 0
+    
+    # 1️⃣ Lift u up to same depth as v
+    diff = depth[u] - depth[v]
+    for j in range(LOG + 1):
+        if diff & (1 << j):
+            max_edge = max(max_edge, max_up[u][j])
+            u = up[u][j]
+    
+    if u == v:
+        return max_edge
+    
+    # 2️⃣ Lift both up until LCA
+    for j in reversed(range(LOG + 1)):
+        if up[u][j] != -1 and up[u][j] != up[v][j]:
+            max_edge = max(max_edge, max_up[u][j], max_up[v][j])
+            u = up[u][j]
+            v = up[v][j]
+    
+    # 3️⃣ Include edges to LCA
+    max_edge = max(max_edge, max_up[u][0], max_up[v][0])
+    
+    return max_edge
+```
