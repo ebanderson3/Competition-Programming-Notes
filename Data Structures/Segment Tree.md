@@ -66,7 +66,8 @@ class SegmentTree {
         	query(ST_RIGHT_BRANCH, max(l, tm + 1), r)
 		);
 	}
-	
+```
+```C++
 public:
 	SegmentTree(vector<int>& initial_data) :
 		size(initial_data.size()), tree(initial_data.size() * 4, 0)
