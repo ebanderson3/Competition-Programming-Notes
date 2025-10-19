@@ -140,3 +140,68 @@ def max_edge_on_path(u, v, up, max_up, depth, LOG):
     
     return max_edge
 ```
+### C++ Implementation
+```C++
+struct LCA {
+	int LOG;
+	vector<vector<int>> up;
+	vector<int> depth;
+	
+	LCA(vector<vector<int>>& graph) :
+		LOG(bit_width(graph.size())),
+		up(graph.size(), vector<int>(LOG + 1, -1)),
+		depth(graph.size(), 0)
+	{
+		vector<pair<int, int>> stack;
+		stack.push_back({0, -1}); // 0 is the root node
+		
+		while (!stack.empty()) {
+			auto [u, p] = stack.back();
+			stack.pop_back();
+			
+			up[u][0] = p;
+			
+			for (int j = 0; j < LOG; j++) {
+				if (up[u][j] != -1) {
+					up[u][j + 1] = up[up[u][j]][j];
+				}
+			}
+			
+			for (int v : graph[u]) {
+				if (v == p) continue;
+				depth[v] = depth[u] + 1;
+				stack.push_back({v, u});
+			}
+		}
+	}
+	
+	int lca(int u, int v) {
+		if (depth[u] < depth[v]) swap(u, v);
+		
+		int diff = depth[u] - depth[v];
+		
+		for (int j = 0; j < LOG + 1; j++) {
+			if (diff & (1 << j)) {
+				u = up[u][j];
+			}
+		}
+		
+		if (u == v) return u;
+		
+		for (int j = LOG; j >= 0; j--) {
+			if (up[u][j] != up[v][j]) {
+				u = up[u][j];
+				v = up[v][j];
+			}
+		}
+		
+		return up[u][0];
+	}
+	
+	int distance(int u, int v) {
+		int lca_node = lca(u, v);
+		
+		return depth[u] + depth[v] - 2 * depth[lca_node];
+	}
+};
+```
