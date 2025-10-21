@@ -19,3 +19,5 @@ https://naq22.kattis.com/contests/naq22
 https://open.kattis.com/contests/ah34mn/standings
 ## Official
 https://mcpc22.kattis.com/contests/mcpc22/standings
+
+https://open.kattis.com/contests/amy2s9
