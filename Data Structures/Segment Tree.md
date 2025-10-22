@@ -53,7 +53,9 @@ class SegmentTree {
 			tree[v] = f(tree[v * 2], tree[v * 2 + 1]);
 		}
 	}
-	
+```
+*Implementation continues on next page.*
+```C++
 	int query(int v, int tl, int tr, int l, int r) {
 		if (l > r) return 0; // Identity element of function f
 		if (l == tl && r == tr) return tree[v];
@@ -66,8 +68,7 @@ class SegmentTree {
         	query(ST_RIGHT_BRANCH, max(l, tm + 1), r)
 		);
 	}
-```
-```C++
+
 public:
 	SegmentTree(vector<int>& initial_data) :
 		size(initial_data.size()), tree(initial_data.size() * 4, 0)

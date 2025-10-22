@@ -40,21 +40,21 @@ if det == 0:
 
 # determinants for Cramer's rule (replace the appropriate column with RHS D's)
 det_x = (
-    D1 * (B2 * C3 - B3 * C2)
-  - B1 * (D2 * C3 - D3 * C2)
-  + C1 * (D2 * B3 - D3 * B2)
+      D1 * (B2 * C3 - B3 * C2)
+    - B1 * (D2 * C3 - D3 * C2)
+    + C1 * (D2 * B3 - D3 * B2)
 )
 
 det_y = (
-    A1 * (D2 * C3 - D3 * C2)
-  - D1 * (A2 * C3 - A3 * C2)
-  + C1 * (A2 * D3 - A3 * D2)
+      A1 * (D2 * C3 - D3 * C2)
+    - D1 * (A2 * C3 - A3 * C2)
+    + C1 * (A2 * D3 - A3 * D2)
 )
 
 det_z = (
-    A1 * (B2 * D3 - B3 * D2)
-  - B1 * (A2 * D3 - A3 * D2)
-  + D1 * (A2 * B3 - A3 * B2)
+      A1 * (B2 * D3 - B3 * D2)
+    - B1 * (A2 * D3 - A3 * D2)
+    + D1 * (A2 * B3 - A3 * B2)
 )
 
 x = det_x / det

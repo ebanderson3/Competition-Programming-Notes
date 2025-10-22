@@ -3,6 +3,7 @@ The Boolean formula is given in CNF (conjunctive normal form), which is a conjun
 Example of CNF:
 $$(a \lor \lnot b) \land (\lnot a \lor b) \land (\lnot a \lor \lnot b) \land (a \lor \lnot c)$$
 
+### C++ Implementation
 ```C++
 struct TwoSatSolver {
     int n_vars;
@@ -41,7 +42,9 @@ struct TwoSatSolver {
                 dfs2(u, cl);
         }
     }
-
+```
+*Implementation continues on next page.*
+```C++
     bool solve_2SAT() {
         order.clear();
         used.assign(n_vertices, false);
@@ -80,7 +83,7 @@ struct TwoSatSolver {
 };
 ```
 
-## Example Usage
+### Example Usage
 ```C++
 TwoSatSolver solver(3); // a, b, c
 solver.add_disjunction(0, false, 1, true);  //     a  v  not b
