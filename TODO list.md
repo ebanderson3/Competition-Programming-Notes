@@ -20,7 +20,7 @@
 - ~~Integration algorithms (Simpson's rule)~~
 - ~~Line intersection tests~~
 - AABB intersection tests
-- Signed distance field formulas for common shapes
+- ~~Signed distance field formulas for common shapes~~
 - Algorithm for finding the intersection of polygons
 - Triangulation algorithm (ear clipping algorithm)
 - ~~Graph covering problem (Vertex Cover)~~
@@ -36,11 +36,11 @@
 - Bottom-up DP solving
 - Geometry
 	- Find if something is between 2 angles
-	- Convex Hull
+	- ~~Convex Hull~~
 	- Center of Mass
-	- Determining concavity or convexity
-	-  Minimum enclosing circle
-	- Which side of a line a point is on
+	- ~~Determining concavity or convexity~~
+	- ~~Minimum enclosing circle~~
+	- ~~Which side of a line a point is on~~
 - ~~Miller–Rabin primality test~~
 - ~~Multiplicative inverse~~
 - Matrix inverse
