@@ -44,4 +44,4 @@
 - ~~Miller–Rabin primality test~~
 - ~~Multiplicative inverse~~
 - ~~Matrix inverse~~
-- 2-SAT
+- ~~2-SAT~~
