@@ -159,6 +159,7 @@ def point_side(px, py, x1, y1, x2, y2):
     value = (x2 - x1) * (py - y1) - (y2 - y1) * (px - x1)
     return value
 ```
+<div class="page-break" style="page-break-before: always;"></div>
 
 ## Convex Hull (Finding the smallest convex polygon enclosing a set of points)
 
