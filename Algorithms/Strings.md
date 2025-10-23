@@ -211,3 +211,24 @@ int main() {
         cout << "Pattern \"" << patterns[id] << "\" found ending at index " << pos << "\n";
 }
 ```
+
+## Edit distance for substrings
+```python
+def min_operations(s, m):
+    n = len(s)
+    k = len(m)
+    if k == 0:
+        return 0
+    dp = [j for j in range(k + 1)]
+    min_ops = dp[k]
+    for i in range(n):
+        new_dp = [0] * (k + 1)
+        new_dp[0] = 0
+        for j in range(1, k + 1):
+            cost = 1 if s[i] != m[j - 1] else 0
+            new_dp[j] = min(dp[j - 1] + cost, dp[j] + 1, new_dp[j - 1] + 1)
+        dp = new_dp
+        if dp[k] < min_ops:
+            min_ops = dp[k]
+    return min_ops
+```
