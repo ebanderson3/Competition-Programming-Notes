@@ -56,6 +56,8 @@
 - #### [Fenwick Tree](Data%20Structures/Fenwick%20Tree.md) (3.1)
 - #### [Union Find](Data%20Structures/Union%20Find.md) (3.2)
 - #### [Segment Tree](Data%20Structures/Segment%20Tree.md) (3.3)
+- #### [Sparse Table](Data%20Structures/Sparse%20Table.md) (3.4)
+    + [Sparse Table (for Range Minimum/Maximum Queries)](Data%20Structures/Sparse%20Table.md#Sparse%20Table%20%28for%20Range%20Minimum/Maximum%20Queries%29)
 ## Dynamic Programming (4)
 - #### [Dynamic Programming 1](Dynamic%20Programming/Dynamic%20Programming%201.md) (4.1)
     + [Common Patterns](Dynamic%20Programming/Dynamic%20Programming%201.md#Common%20Patterns)
