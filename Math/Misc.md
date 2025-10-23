@@ -113,3 +113,17 @@ $$
 = \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix}
 $$
 Where $F_n$ is the nth term of the Fibonacci sequence. The matrix powers can be quickly calculated using Binary Exponentiation (see above).
+
+## GCD (Euclid's Algorithm)
+```python
+def gcd(a, b):
+    """
+    Calculate the Greatest Common Divisor (GCD) of two integers using Euclid's algorithm.
+    """
+     
+    # Euclid's algorithm: GCD(a, b) = GCD(b, a mod b)
+    while b != 0:
+        a, b = b, a % b
+    
+    return a
+```

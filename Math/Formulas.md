@@ -9,3 +9,5 @@ $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 $$\binom{n}{k} = \frac{n!}{k! (n-k)!}$$
 ## Sum of 1..n
 $$\sum_{i=1}^{n}{i} = \frac{n (n + 1)}{2}$$
+## LCM
+$$\text{lcm}(a, b) = \frac{|ab|}{\text{gcd}(a, b)}$$
