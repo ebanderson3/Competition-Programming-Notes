@@ -441,6 +441,90 @@ def minimum_enclosing_circle(points: List[Point]) -> Tuple[Point, float]:
     return mec_helper(points, [], len(points))
 ```
 
+## Ear-Clipping Triangulation (Polygon triangulation for rendering and geometry processing)
 
+**What it does:**
+Decomposes a simple polygon (non-intersecting) into a set of triangles by iteratively removing “ears” — triangles formed by three consecutive vertices that contain no other points inside them.
+**Requirements:**
+* Input: A *simple polygon* represented by an ordered list of vertices `(x, y)` in counterclockwise order.
+* Each vertex should be a 2D point.
+* The polygon must not be self-intersecting.
+**When to use:**
+* When you need to triangulate polygons for graphics rendering, finite element analysis, or computational geometry tasks such as area computation or convex decomposition.
+**Complexity:**
+* Time: **O(n²)** (due to repeated ear searches and vertex removals)
+* Space: **O(n)**
+**Key insight:**
+By successively identifying and clipping “ears” (triangles that don’t enclose other vertices), the polygon can be reduced until only triangles remain.
 
+```python
+def ear_clipping_triangulation(polygon):
+    """
+    Triangulates a simple polygon using the ear-clipping method.
+    
+    Parameters:
+        polygon (list[tuple[float, float]]): List of (x, y) vertices in CCW order.
+    
+    Returns:
+        list[tuple[int, int, int]]: List of triangle vertex indices (referring to the input polygon).
+    """
+    # Helper function to compute cross product
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
 
+    # Check if vertex i forms a convex corner
+    def is_convex(prev, curr, next_):
+        return cross(prev, curr, next_) > 0
+
+    # Check if point p is inside triangle (a, b, c)
+    def point_in_triangle(a, b, c, p):
+        c1 = cross(a, b, p)
+        c2 = cross(b, c, p)
+        c3 = cross(c, a, p)
+        return (c1 >= 0 and c2 >= 0 and c3 >= 0) or (c1 <= 0 and c2 <= 0 and c3 <= 0)
+
+    n = len(polygon)
+    if n < 3:
+        return []
+
+    indices = list(range(n))
+    triangles = []
+
+    # Main ear clipping loop
+    while len(indices) > 3:
+        ear_found = False
+        for i in range(len(indices)):
+            prev_i = indices[i - 1]
+            curr_i = indices[i]
+            next_i = indices[(i + 1) % len(indices)]
+
+            prev, curr, next_ = polygon[prev_i], polygon[curr_i], polygon[next_i]
+
+            # Check if current vertex forms a convex corner
+            if not is_convex(prev, curr, next_):
+                continue
+
+            # Check if no other vertex lies inside this potential ear
+            ear_valid = True
+            for j in indices:
+                if j in (prev_i, curr_i, next_i):
+                    continue
+                if point_in_triangle(prev, curr, next_, polygon[j]):
+                    ear_valid = False
+                    break
+
+            # If a valid ear is found, clip it
+            if ear_valid:
+                triangles.append((prev_i, curr_i, next_i))
+                del indices[i]
+                ear_found = True
+                break
+
+        if not ear_found:
+            # Polygon might be degenerate or malformed
+            raise ValueError("No ear found. The polygon may be invalid or self-intersecting.")
+
+    # Add the final triangle
+    triangles.append(tuple(indices))
+    return triangles
+```
