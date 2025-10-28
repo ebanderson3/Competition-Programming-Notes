@@ -163,6 +163,7 @@
     + [Convex Hull (Finding the smallest convex polygon enclosing a set of points)](Math/Geometry.md#Convex%20Hull%20%28Finding%20the%20smallest%20convex%20polygon%20enclosing%20a%20set%20of%20points%29)
     + [Convexity Check for Polygon (Complex-number representation)](Math/Geometry.md#Convexity%20Check%20for%20Polygon%20%28Complex-number%20representation%29)
     + [Minimum Enclosing Circle (Smallest Circle Covering All Points)](Math/Geometry.md#Minimum%20Enclosing%20Circle%20%28Smallest%20Circle%20Covering%20All%20Points%29)
+    + [Ear-Clipping Triangulation (Polygon triangulation for rendering and geometry processing)](Math/Geometry.md#Ear-Clipping%20Triangulation%20%28Polygon%20triangulation%20for%20rendering%20and%20geometry%20processing%29)
 - #### [Integration](Math/Integration.md) (6.4)
     + [Simpson's Method](Math/Integration.md#Simpson's%20Method)
 - #### [Linear Algebra](Math/Linear%20Algebra.md) (6.5)
