@@ -45,3 +45,4 @@
 - ~~Multiplicative inverse~~
 - ~~Matrix inverse~~
 - ~~2-SAT~~
+- Fenwick Tree Longest Increasing Subsequence
